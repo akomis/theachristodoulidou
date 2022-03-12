@@ -1,14 +1,11 @@
 import SEO from "../components/seo";
-import Screen from "../components/screen";
-import Intro from "../components/intro";
+import Intro from "../sections/intro";
 
 export default function Home() {
-  return (
-    <>
-      <SEO />
-      <Screen>
-        <Intro/>
-      </Screen>
-    </>
-  );
+	return (
+		<>
+			<SEO />
+			<Intro />
+		</>
+	);
 }
