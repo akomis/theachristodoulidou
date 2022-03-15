@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,600&display=swap");
-
 @layer base {
+	.screen {
+		@apply flex min-h-screen;
+	}
+
 	.section {
-		@apply p-5;
+		@apply flex grow;
 	}
 }
 
