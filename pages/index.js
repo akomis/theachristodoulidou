@@ -1,6 +1,7 @@
 import Fonts from "../components/fonts";
 import SEO from "../components/seo";
 import Intro from "../sections/intro";
+import Order from "../sections/order";
 
 export default function Home() {
 	return (
@@ -8,6 +9,7 @@ export default function Home() {
 			<SEO />
 			<Fonts />
 			<Intro />
+			<Order />
 		</div>
 	);
 }

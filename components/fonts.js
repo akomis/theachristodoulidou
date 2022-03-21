@@ -14,7 +14,7 @@ export default function Fonts() {
 				crossOrigin=""
 			/>
 			<link
-				href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Open+Sans&family=Vollkorn:ital,wght@1,500&display=swap"
+				href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Open+Sans&family=Vollkorn:ital,wght@1,400;1,500&display=swap"
 				rel="stylesheet"
 			/>
 		</Head>
