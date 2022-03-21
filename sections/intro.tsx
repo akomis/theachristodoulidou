@@ -24,7 +24,7 @@ const IMAGE_PROPS = [
 			"-rotate-[20deg] -left-10 top-20 w-[200px] sm:w-[250px] lg:w-[300px]",
 		text: "Σηκώθηκε όρθιος, τράβηξε το παντελόνι του να το κουμπώσει και προτού φύγει έσκυψε ξανά πάνω από το κορμί της, που αφημένο όπως ήταν έμοιαζε με άψυχο σώμα πάνινης κούκλας",
 		textPosition:
-			"top-10 left-[180px] w-[300px] sm:left-[220px] sm:w-[500px] lg:left-[300px] lg:w-[50%]",
+			"top-5 left-[180px] w-[250px] sm:left-[220px] sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
 	},
 	{
 		src: "/images/intro/tree.png",
@@ -32,10 +32,10 @@ const IMAGE_PROPS = [
 		width: 1424,
 		height: 721,
 		imgPosition:
-			"-right-10 top-[20%] w-[70%] sm:top-[15%] md:w-[60%] md:top-[5%] lg:w-[50%]",
+			"-right-10 top-[220px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		text: "Ετούτα είναι μαλακά σαν το βαμβάκι. Στεναχωριέσαι που θα κοιμάμαι στη σκιά ενός τόσο όμορφου δέντρου;",
 		textPosition:
-			"text-right top-12 right-10 w-[40%] sm:top-16 sm:w-[40%] md:top-[40%] lg:top-[60%] lg:right-[5%] lg:w-[40%]",
+			"text-right top-24 right-10 w-[40%] sm:top-16 sm:w-[60%] md:top-[40%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
 	},
 	{
 		src: "/images/intro/girl.png",
@@ -43,10 +43,10 @@ const IMAGE_PROPS = [
 		width: 1078,
 		height: 1139,
 		imgPosition:
-			"-left-20 -bottom-32 w-[500px] sm:-left-10 sm:w-[650px] lg:left-0 lg:w-[700px]",
-		text: "Το κορίτσι υπάκουα απομακρύνθηκε και προτού πάει στην κάμαρή της πέρασε από αυτή του Δάκη για να δει αν χρειαζόταν κάτι. ",
+			"-left-40 -bottom-32 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
+		text: "Το κορίτσι υπάκουα απομακρύνθηκε και προτού πάει στην κάμαρή της πέρασε από αυτή του Δάκη για να δει αν χρειαζόταν κάτι.",
 		textPosition:
-			"text-right left-10 w-[250px] bottom-[300px] sm:w-[300px] sm:bottom-[400px] sm:left-[50px] md:left-[650px] md:w-[400px] md:text-left lg:left-[700px] lg:w-[40%]",
+			"text-justify left-[100px] w-[250px] bottom-[420px] sm:text-right sm:w-[300px] sm:bottom-[400px] sm:left-[50px] lg:w-[400px]",
 	},
 ];
 
@@ -69,26 +69,22 @@ type InteractiveImageProps = {
 	imgProps: imgProps;
 };
 
-const addToFilename = (path: string, addition: string): string => {
-	const [filename, extension] = path.split(".");
-	return `${filename}${addition}.${extension}`;
-};
-
 const InteractiveImage = (props: InteractiveImageProps) => {
 	const { imgProps } = props;
 	const [hovered, setHovered] = useState(false);
+	const [mounted, setMounted] = useState(false);
 
-	const imgUtilityClasses = `absolute duration-300 ${imgProps.imgPosition}`;
-	const textUtilityClasses = `absolute duration-300 ${
-		imgProps.textPosition
-	} ${hovered ? "opacity-100" : "opacity-0"}`;
 	return (
 		<div
 			className=""
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<div className={`${imgUtilityClasses}`}>
+			<div
+				className={`absolute duration-500 ${imgProps.imgPosition} 
+				${mounted ? "grayscale-0" : "grayscale"}
+				${hovered ? "grayscale-0" : "grayscale"}`}
+			>
 				<Image
 					src={imgProps.src}
 					alt={imgProps.alt}
@@ -97,19 +93,12 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 				/>
 			</div>
 			<div
-				className={`${
-					hovered ? "opacity-0" : "opacity-100"
-				} ${imgUtilityClasses}`}
+				className={`absolute duration-500 sm:text-xl md:text-2xl lg:text-3xl ${
+					imgProps.textPosition
+				} 
+		${hovered ? "opacity-100" : "opacity-0"}`}
 			>
-				<Image
-					src={addToFilename(imgProps.src, "_bw")}
-					alt={imgProps.alt}
-					width={imgProps.width}
-					height={imgProps.height}
-				/>
-			</div>
-			<div className={textUtilityClasses}>
-				<p className="italic font-vollkorn font-light text-gray-300 sm:text-xl md:text-2xl lg:text-3xl ">
+				<p className="italic font-vollkorn font-light text-gray-300">
 					{`"${imgProps.text}"`}
 				</p>
 			</div>
@@ -119,7 +108,7 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 
 export default function Intro() {
 	return (
-		<div className="relative h-screen bg-black">
+		<div className="relative min-h-[1000px] h-screen bg-black">
 			{IMAGE_PROPS.map((imgProps) => (
 				<InteractiveImage key={imgProps.src} imgProps={imgProps} />
 			))}
