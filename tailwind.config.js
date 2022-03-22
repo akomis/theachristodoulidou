@@ -17,9 +17,9 @@ module.exports = {
 		},
 		extend: {
 			keyframes: {
-				fadeIn: {
-					"0%": { opacity: 0 },
-					"100%": { opacity: 1 },
+				titleColorChange: {
+					"0%": { color: "white" },
+					"100%": { color: "#A24F70" },
 				},
 			},
 		},

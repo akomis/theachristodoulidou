@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type imgProps = {
 	src: string;
@@ -50,20 +50,40 @@ const IMAGE_PROPS = [
 	},
 ];
 
-const TextContent = () => (
-	<div className="flex absolute top-[20%] left-[10%]">
-		<div className="w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col">
-			<h1 className="w-0 sm:w-auto font-vollkorn text-7xl md:text-8xl text-white m-4 text-left">
-				{TITLE}
-			</h1>
-			<div className="text-right">
-				<h5 className="my-4 font-notoserif text-xl sm:text-2xl md:text-4xl text-gray-200">
-					{DESCRIPTION}
-				</h5>
+const TextContent = () => {
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	return (
+		<div className={"flex absolute top-[300px] left-[10%]"}>
+			<div
+				className={`duration-1000 delay-700 ${
+					!mounted ? "opacity-0" : "opacity-100"
+				} w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
+			>
+				<h1
+					className={`${
+						!mounted ? "text-white" : "text-[#A24F70]"
+					} m-4 text-left transition-all duration-1000 delay-[2000ms] w-0 sm:w-auto font-vollkorn text-7xl md:text-8xl`}
+				>
+					{TITLE}
+				</h1>
+				<div
+					className={`duration-1000 delay-[2000ms] ${
+						!mounted ? "opacity-0" : "opacity-100"
+					} text-right`}
+				>
+					<h5 className="my-4 font-notoserif text-xl sm:text-2xl md:text-4xl text-gray-200">
+						{DESCRIPTION}
+					</h5>
+				</div>
 			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 type InteractiveImageProps = {
 	imgProps: imgProps;
@@ -74,16 +94,21 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 	const [hovered, setHovered] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
 	return (
 		<div
-			className=""
+			className={`duration-1000 delay-150 ${
+				!mounted ? "opacity-0" : "opacity-100"
+			}`}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
 			<div
-				className={`absolute duration-500 ${imgProps.imgPosition} 
-				${mounted ? "grayscale-0" : "grayscale"}
-				${hovered ? "grayscale-0" : "grayscale"}`}
+				className={`absolute ${imgProps.imgPosition} 
+				${!hovered ? "grayscale" : "grayscale-0"}`}
 			>
 				<Image
 					src={imgProps.src}
@@ -96,7 +121,7 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 				className={`absolute duration-500 sm:text-xl md:text-2xl lg:text-3xl ${
 					imgProps.textPosition
 				} 
-		${hovered ? "opacity-100" : "opacity-0"}`}
+		${!hovered ? "opacity-0" : "opacity-100"}`}
 			>
 				<p className="italic font-vollkorn font-light text-gray-300">
 					{`"${imgProps.text}"`}

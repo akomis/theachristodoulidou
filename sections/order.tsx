@@ -9,7 +9,7 @@ export default function Order() {
 			</p>
 			<a
 				href={`tel:${TEL_CODE}${TEL_NUMBER}`}
-				className="font-bold text-gray-400 hover:text-white md:hover:text-3xl  hover:text-4xl duration-300"
+				className="font-bold text-gray-400 hover:text-white sm:hover:text-2xl md:hover:text-3xl  hover:text-4xl duration-300"
 			>
 				{TEL_NUMBER}
 			</a>

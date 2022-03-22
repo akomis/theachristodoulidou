@@ -4,12 +4,6 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
-				<title>Thea Christodoulidou</title>
-				<meta
-					name="viewport"
-					content="initial-scale=1.0, width=device-width"
-				/>
-				<meta name="description" content="Thea Christodoulidou" />
 				<link rel="icon" href="/favicon.ico" />
 				<link
 					rel="preconnect"
