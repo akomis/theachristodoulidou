@@ -30,7 +30,7 @@ const IMAGE_PROPS = [
 			"Η κούκλα πεσμένη στο πλάι της την κοιτούσε κατάματα, η κόρη της όμως όχι.",
 		],
 		textPosition:
-			"top-5 left-[180px] w-[250px] sm:left-[220px] sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
+			"top-5 left-[180px] w-[250px] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
 		delay: 300,
 	},
 	{
@@ -62,7 +62,7 @@ const IMAGE_PROPS = [
 			"Πεσμένο ανάσκελα στο πάτωμα το κορίτσι, ακουμπούσε το χέρι της στο χάρτινο κουτί, που από μέσα ακουγόταν το μωρό να κλαίει ασταμάτητα",
 		],
 		textPosition:
-			"text-right right-[60%] w-[175px] bottom-[400px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[250px] lg:text-left ",
+			"text-right right-[60%] w-[175px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[250px] lg:text-left ",
 		delay: 1000,
 	},
 ];
@@ -77,7 +77,7 @@ const Heading = () => {
 	return (
 		<div className="flex absolute top-[300px] left-[10%]">
 			<div
-				className={`transition-opacity duration-1000 delay-700 ${
+				className={`transition-opacity duration-1000 delay-[1200ms] ${
 					!mounted ? "opacity-0" : "opacity-100"
 				} w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
 			>
@@ -133,9 +133,9 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 
 	return (
 		<div
-			className={`delay-[${imgProps.delay}ms] 
-			transition-opacity duration-1000 
-			${!mounted ? "opacity-0" : "opacity-100"}`}
+			className={`transition-opacity duration-1000 delay-500 ${
+				!mounted ? "opacity-0" : "opacity-100"
+			}`}
 		>
 			<div
 				className={`absolute transition-all duration-700 ${
@@ -188,7 +188,7 @@ const OrderBlock = () => {
 				</p>
 				<a
 					href={`tel:${TEL_CODE}${TEL_NUMBER}`}
-					className="font-bold text-gray-400 hover:text-white hover:text-2xl md:hover:text-3xl lg:hover:text-4xl duration-300"
+					className="font-bold text-gray-300 hover:text-white hover:text-2xl md:hover:text-3xl lg:hover:text-4xl duration-300"
 				>
 					{TEL_NUMBER}
 				</a>

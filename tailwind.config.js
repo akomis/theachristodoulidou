@@ -15,14 +15,6 @@ module.exports = {
 			vollkorn: ["Vollkorn", "serif"],
 			notoserif: ["Noto Serif Display", "serif"],
 		},
-		extend: {
-			keyframes: {
-				titleColorChange: {
-					"0%": { color: "white" },
-					"100%": { color: "#A24F70" },
-				},
-			},
-		},
 	},
 	plugins: [],
 };
