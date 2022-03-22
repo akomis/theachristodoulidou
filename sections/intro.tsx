@@ -7,7 +7,7 @@ type imgProps = {
 	width: number;
 	height: number;
 	imgPosition: string;
-	text: string;
+	text: string[];
 	textPosition: string;
 	delay: number;
 };
@@ -30,7 +30,7 @@ const IMAGE_PROPS = [
 			"Η κούκλα πεσμένη στο πλάι της την κοιτούσε κατάματα, η κόρη της όμως όχι.",
 		],
 		textPosition:
-			"top-5 left-[180px] w-[250px] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
+			"top-5 left-[180px] w-[190px] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
 		delay: 300,
 	},
 	{
@@ -46,7 +46,7 @@ const IMAGE_PROPS = [
 			"Καλό θα μας κάνει να φύγουμε απ’ αυτό το σπίτι που κάθε φορά που διαβαίνουμε την εξώπορτά του βλέπουμε απέναντί μας ετούτο το καταραμένο δέντρο",
 		],
 		textPosition:
-			"text-right top-24 right-10 w-[50%] sm:top-12 sm:w-[70%] md:top-[45%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
+			"text-right top-16 right-10 w-[45%] sm:top-12 sm:w-[70%] md:top-[45%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
 		delay: 800,
 	},
 	{
@@ -62,7 +62,7 @@ const IMAGE_PROPS = [
 			"Πεσμένο ανάσκελα στο πάτωμα το κορίτσι, ακουμπούσε το χέρι της στο χάρτινο κουτί, που από μέσα ακουγόταν το μωρό να κλαίει ασταμάτητα",
 		],
 		textPosition:
-			"text-right right-[60%] w-[175px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
+			"text-right right-[60%] w-[170px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];
@@ -79,7 +79,7 @@ const Heading = () => {
 			<div
 				className={`transition-opacity duration-1000 delay-[1200ms] ${
 					!mounted ? "opacity-0" : "opacity-100"
-				} w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
+				} w-[300px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
 			>
 				<h1
 					className={`${
