@@ -62,7 +62,7 @@ const IMAGE_PROPS = [
 			"Πεσμένο ανάσκελα στο πάτωμα το κορίτσι, ακουμπούσε το χέρι της στο χάρτινο κουτί, που από μέσα ακουγόταν το μωρό να κλαίει ασταμάτητα",
 		],
 		textPosition:
-			"text-right right-[60%] w-[175px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[250px] lg:text-left ",
+			"text-right right-[60%] w-[175px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];
