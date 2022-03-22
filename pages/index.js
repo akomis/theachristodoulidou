@@ -1,11 +1,9 @@
 import Intro from "../sections/intro";
-import Order from "../sections/order";
 
 export default function Home() {
 	return (
-		<div className="screen">
+		<div className="h-screen w-screen overflow-x-hidden">
 			<Intro />
-			<Order />
 		</div>
 	);
 }
