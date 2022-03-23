@@ -191,7 +191,6 @@ export default function Intro() {
 					key={i}
 					imgProps={imgProps}
 					textIndex={textIndex}
-					// active={i === 1}
 					active={(i === textIndex || i + 3 === textIndex) && !pause}
 				/>
 			))}
