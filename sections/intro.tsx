@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type imgProps = {
 	src: string;
@@ -7,15 +7,20 @@ type imgProps = {
 	width: number;
 	height: number;
 	imgPosition: string;
-	text: string[];
 	textPosition: string;
 	delay: number;
 };
 
 const TITLE = "Το χάρτινο κουτί";
-const DESCRIPTION = "Κυκλοφορεί αρχές Απριλίου";
+const BG_TEXT = [
+	"Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
+	"Μια γυναίκα που κάθε φορά που επιχειρούσε μια απονενοημένη έξοδο, έπεφτε σε χειρότερη δύνη.",
+	"Μια τόσο αληθινή ηρωίδα, που ο αναγνώστης παίρνοντας το βιβλίο στα χέρια του, δύσκολα μπορεί να αποχωριστεί.",
+	"Γίνεται μέρος της ιστορίας, μοιράζεται τα πάθη και τις αγωνίες των ηρώων, ταυτίζεται, παίρνει θέση και διαμορφώνει στάση.",
+	"Μια ιστορία που ψηλαφεί τις πιο σκοτεινές περιοχές της ανθρώπινης φύσης και που τελικά μας οδηγεί στην απόλυτη κάθαρση.",
+	"Ένα μυθιστόρημα που αξίζει να διαβαστεί και να ταξιδέψει σε πολλά χέρια.",
+];
 const DEFAULT_ALT = "To Xartino Kouti Book Cover - Το Χάρτινο Κουτί Εξώφυλλο";
-const TEXT_LEN = 3;
 const IMAGE_PROPS = [
 	{
 		src: "/images/intro/doll.png",
@@ -24,13 +29,8 @@ const IMAGE_PROPS = [
 		height: 179,
 		imgPosition:
 			"-rotate-[20deg] -left-10 top-20 w-[200px] sm:w-[250px] lg:w-[300px]",
-		text: [
-			"Σηκώθηκε όρθιος, τράβηξε το παντελόνι του να το κουμπώσει και προτού φύγει έσκυψε ξανά πάνω από το κορμί της, που αφημένο όπως ήταν έμοιαζε με άψυχο σώμα πάνινης κούκλας",
-			"Φωτεινή είχαν ονομάσει μια κούκλα που της είχε αγοράσει η Αστέρω, η οποία αφού δεν μπόρεσε να δώσει αυτό το όνομα στην Άννα όπως ήθελε, την έπεισε να ονομάσουνε έτσι την κούκλα που της είχε πάρει δώρο",
-			"Η κούκλα πεσμένη στο πλάι της την κοιτούσε κατάματα, η κόρη της όμως όχι.",
-		],
 		textPosition:
-			"top-5 left-[180px] w-[190px] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
+			"top-10 left-[180px] w-[50%] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
 		delay: 300,
 	},
 	{
@@ -39,14 +39,9 @@ const IMAGE_PROPS = [
 		width: 1424,
 		height: 721,
 		imgPosition:
-			"-right-10 top-[220px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
-		text: [
-			"Ετούτα είναι μαλακά σαν το βαμβάκι. Στεναχωριέσαι που θα κοιμάμαι στη σκιά ενός τόσο όμορφου δέντρου;",
-			"Κοίταξε ψηλά τα κλαδιά του δέντρου, που σαν ομπρέλα απλωνόντουσαν πάνω από το κεφάλι του.",
-			"Καλό θα μας κάνει να φύγουμε απ’ αυτό το σπίτι που κάθε φορά που διαβαίνουμε την εξώπορτά του βλέπουμε απέναντί μας ετούτο το καταραμένο δέντρο",
-		],
+			"-right-10 top-[200px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		textPosition:
-			"text-right top-16 right-10 w-[45%] sm:top-12 sm:w-[70%] md:top-[45%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
+			"text-right top-[360px] right-26 w-[70%] sm:right-10 sm:top-12 sm:w-[70%] md:right-10 md:top-[40%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
 		delay: 800,
 	},
 	{
@@ -56,13 +51,8 @@ const IMAGE_PROPS = [
 		height: 1135,
 		imgPosition:
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
-		text: [
-			"Λυπήσου το κορίτσι που θα ξεσπάσει επάνω του, λυπήσου και τη μάνα της που δεν θα βγει ζωντανή από τα χέρια του.",
-			"Το κορίτσι πετάχτηκε όρθιο, υπερβολικά ταραγμένο και τρέμοντας ρώτησε: «Ποιος έκλεψε αφέντη; Εγώ; Εγώ έκανα τέτοιο πράγμα;",
-			"Πεσμένο ανάσκελα στο πάτωμα το κορίτσι, ακουμπούσε το χέρι της στο χάρτινο κουτί, που από μέσα ακουγόταν το μωρό να κλαίει ασταμάτητα",
-		],
 		textPosition:
-			"text-right right-[60%] w-[170px] bottom-[380px] sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
+			"text-left right-2 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];
@@ -75,61 +65,35 @@ const Heading = () => {
 	}, []);
 
 	return (
-		<div className="flex absolute top-[300px] left-[10%]">
-			<div
-				className={`transition-opacity duration-1000 delay-[1200ms] ${
-					!mounted ? "opacity-0" : "opacity-100"
-				} w-[300px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
+		<div
+			className={`absolute left-0 right-0 mx-auto transition-opacity duration-1000 delay-[1200ms] top-[450px] sm:top-[300px] ${
+				!mounted ? "opacity-0" : "opacity-100"
+			} w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
+		>
+			<h1
+				className={`${
+					!mounted ? "text-white" : "text-[#A24F70]"
+				} m-4 text-center text-5xl sm:text-7xl transition-colors duration-1000 delay-[2000ms] sm:w-auto font-vollkorn md:text-8xl`}
 			>
-				<h1
-					className={`${
-						!mounted ? "text-white" : "text-[#A24F70]"
-					} m-4 text-left transition-colors duration-1000 delay-[2000ms] w-0 sm:w-auto font-vollkorn text-7xl md:text-8xl`}
-				>
-					{TITLE}
-				</h1>
-				<div
-					className={`transition-opacity duration-1000 delay-[2000ms] ${
-						!mounted ? "opacity-0" : "opacity-100"
-					} text-right`}
-				>
-					<h5 className="my-4 font-notoserif text-xl sm:text-2xl md:text-4xl text-gray-200">
-						{DESCRIPTION}
-					</h5>
-				</div>
-			</div>
+				{TITLE}
+			</h1>
 		</div>
 	);
 };
 
 type InteractiveImageProps = {
 	imgProps: imgProps;
+	textIndex: number;
+	active: boolean;
 };
 
 const InteractiveImage = (props: InteractiveImageProps) => {
-	const { imgProps } = props;
-	const [textIndex, setTextIndex] = useState(-1);
-	const [active, setActive] = useState(false);
+	const { imgProps, textIndex, active } = props;
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
 		setMounted(true);
 	}, []);
-
-	const incrementTextIndex = () => {
-		textIndex < TEXT_LEN - 1
-			? setTextIndex(textIndex + 1)
-			: setTextIndex(0);
-	};
-
-	const activateImage = () => {
-		incrementTextIndex();
-		setActive(true);
-	};
-
-	const deactivateImage = () => {
-		setActive(false);
-	};
 
 	return (
 		<div
@@ -141,9 +105,6 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 				className={`absolute transition-all duration-700 ${
 					imgProps.imgPosition
 				} ${!active ? "grayscale" : "grayscale-0"}`}
-				onClick={() => (active ? deactivateImage() : activateImage())}
-				onMouseEnter={() => activateImage()}
-				onMouseLeave={() => deactivateImage()}
 			>
 				<Image
 					src={imgProps.src}
@@ -160,7 +121,7 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 		${!active ? "opacity-0" : "opacity-100"}`}
 			>
 				<p className="italic font-vollkorn font-light text-gray-300">
-					{`"${imgProps.text[textIndex]}"`}
+					{`"${BG_TEXT[textIndex]}"`}
 				</p>
 			</div>
 		</div>
@@ -198,11 +159,40 @@ const OrderBlock = () => {
 };
 
 export default function Intro() {
+	const [textIndex, setTextIndex] = useState(-1);
+	const [pause, setPause] = useState(true);
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		if (!mounted) {
+			setMounted(true);
+			setTimeout(() => setTextIndex(0), 3000);
+		}
+
+		// const words = BG_TEXT[textIndex].split(" ").length;
+		// const timeout = Math.max((words * 60000) / 200, 5000);
+
+		setTimeout(() => {
+			setPause(true);
+			setTimeout(() => {
+				textIndex < BG_TEXT.length - 1
+					? setTextIndex(textIndex + 1)
+					: setTextIndex(0);
+				setPause(false);
+			}, 500);
+		}, 5500);
+	}, [textIndex, mounted]);
+
 	return (
 		<div className="relative h-full min-h-[1125px] bg-black">
 			<OrderBlock />
-			{IMAGE_PROPS.map((imgProps) => (
-				<InteractiveImage key={imgProps.src} imgProps={imgProps} />
+			{IMAGE_PROPS.map((imgProps, i) => (
+				<InteractiveImage
+					key={i}
+					imgProps={imgProps}
+					textIndex={textIndex}
+					active={(i === textIndex || i + 3 === textIndex) && !pause}
+				/>
 			))}
 			<Heading />
 		</div>
