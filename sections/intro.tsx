@@ -30,7 +30,7 @@ const IMAGE_PROPS = [
 		imgPosition:
 			"-rotate-[20deg] -left-10 top-20 w-[200px] sm:w-[250px] lg:w-[300px]",
 		textPosition:
-			"top-5 left-[180px] w-[190px] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
+			"top-10 left-[180px] w-[50%] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
 		delay: 300,
 	},
 	{
@@ -39,9 +39,9 @@ const IMAGE_PROPS = [
 		width: 1424,
 		height: 721,
 		imgPosition:
-			"-right-10 top-[220px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
+			"-right-10 top-[200px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		textPosition:
-			"text-right top-24 right-5 w-[45%] sm:top-12 sm:w-[70%] md:right-10 md:top-[40%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
+			"text-right top-[360px] right-26 w-[70%] sm:right-10 sm:top-12 sm:w-[70%] md:right-10 md:top-[40%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
 		delay: 800,
 	},
 	{
@@ -52,7 +52,7 @@ const IMAGE_PROPS = [
 		imgPosition:
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
 		textPosition:
-			"text-left text-sm left-5 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
+			"text-left right-2 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];
@@ -180,8 +180,8 @@ export default function Intro() {
 					: setTextIndex(0);
 				setPause(false);
 			}, 500);
-		}, 5000);
-	}, [textIndex]);
+		}, 5500);
+	}, [textIndex, mounted]);
 
 	return (
 		<div className="relative h-full min-h-[1125px] bg-black">
@@ -191,6 +191,7 @@ export default function Intro() {
 					key={i}
 					imgProps={imgProps}
 					textIndex={textIndex}
+					// active={i === 1}
 					active={(i === textIndex || i + 3 === textIndex) && !pause}
 				/>
 			))}
