@@ -41,7 +41,7 @@ const IMAGE_PROPS = [
 		imgPosition:
 			"-right-10 top-[200px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		textPosition:
-			"text-right top-[360px] right-26 w-[70%] sm:right-10 sm:top-12 sm:w-[70%] md:right-10 md:top-[40%] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
+			"text-right top-[360px] right-26 w-[70%] sm:right-10 sm:top-12 sm:w-[70%] md:right-10 md:top-[450px] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
 		delay: 800,
 	},
 	{
@@ -160,28 +160,25 @@ const OrderBlock = () => {
 
 export default function Intro() {
 	const [textIndex, setTextIndex] = useState(-1);
-	const [pause, setPause] = useState(true);
+	const [pause, setPause] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
 		if (!mounted) {
-			setMounted(true);
 			setTimeout(() => setTextIndex(0), 3000);
-		}
-
-		// const words = BG_TEXT[textIndex].split(" ").length;
-		// const timeout = Math.max((words * 60000) / 200, 5000);
-
-		setTimeout(() => {
-			setPause(true);
+			setMounted(true);
+		} else {
 			setTimeout(() => {
-				textIndex < BG_TEXT.length - 1
-					? setTextIndex(textIndex + 1)
-					: setTextIndex(0);
-				setPause(false);
-			}, 500);
-		}, 5500);
-	}, [textIndex, mounted]);
+				setPause(true);
+				setTimeout(() => {
+					textIndex < BG_TEXT.length - 1
+						? setTextIndex(textIndex + 1)
+						: setTextIndex(0);
+					setPause(false);
+				}, 500);
+			}, 6000);
+		}
+	}, [textIndex]);
 
 	return (
 		<div className="relative h-full min-h-[1125px] bg-black">
