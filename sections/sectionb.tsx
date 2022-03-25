@@ -98,12 +98,13 @@ const Introduction = () => {
 type FormInputProps = {
 	placeholder: string;
 	type: string;
+	name: string;
 	autoComplete?: string;
 	large?: boolean;
 };
 
 const FormInput = (props: FormInputProps) => {
-	const { placeholder, type, autoComplete, large } = props;
+	const { placeholder, type, name, autoComplete, large } = props;
 
 	const styles =
 		"mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-black ";
@@ -111,6 +112,7 @@ const FormInput = (props: FormInputProps) => {
 	return large ? (
 		<textarea
 			className={`${styles} h-56`}
+			name={name}
 			placeholder={placeholder}
 			autoComplete={autoComplete ?? "none"}
 			required
@@ -118,6 +120,7 @@ const FormInput = (props: FormInputProps) => {
 	) : (
 		<input
 			className={`${styles} h-10`}
+			name={name}
 			placeholder={placeholder}
 			type={type}
 			autoComplete={autoComplete ?? "none"}
@@ -141,14 +144,21 @@ const Contact = () => {
 					placeholder="Όνομα"
 					type="text"
 					autoComplete="name"
+					name="name"
 				/>
 				<FormInput
 					placeholder="E-mail"
 					type="email"
 					autoComplete="email"
+					name="email"
 				/>
-				<FormInput placeholder="Θέμα" type="text" />
-				<FormInput placeholder="Μήνυμα" type="text" large />
+				<FormInput placeholder="Θέμα" type="text" name="subject" />
+				<FormInput
+					placeholder="Μήνυμα"
+					type="text"
+					name="message"
+					large
+				/>
 				<button
 					className="bg-black shadow w-full mx-auto rounded-md my-4 py-2 px-4 text-xl font-bold hover:text-black hover:bg-gray-200 hover:ring hover:ring-white duration-300"
 					type="submit"
