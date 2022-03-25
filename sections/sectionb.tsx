@@ -1,3 +1,9 @@
+import {
+	ChangeEvent,
+	ChangeEventHandler,
+	FormEventHandler,
+	useState,
+} from "react";
 import Title from "../components/title";
 
 const INTRO_TEXT = `Η Θέα Χριστοδουλίδου, μετά το πρώτο της μυθιστόρημα «η Κούκλα»,
@@ -99,20 +105,22 @@ type FormInputProps = {
 	placeholder: string;
 	type: string;
 	name: string;
+	onChange: (e: ChangeEvent<any>) => void;
 	autoComplete?: string;
 	large?: boolean;
 };
 
 const FormInput = (props: FormInputProps) => {
-	const { placeholder, type, name, autoComplete, large } = props;
+	const { placeholder, type, name, onChange, autoComplete, large } = props;
 
 	const styles =
-		"mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-black ";
+		"mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black";
 
 	return large ? (
 		<textarea
 			className={`${styles} h-56`}
 			name={name}
+			onChange={onChange}
 			placeholder={placeholder}
 			autoComplete={autoComplete ?? "none"}
 			required
@@ -121,6 +129,7 @@ const FormInput = (props: FormInputProps) => {
 		<input
 			className={`${styles} h-10`}
 			name={name}
+			onChange={onChange}
 			placeholder={placeholder}
 			type={type}
 			autoComplete={autoComplete ?? "none"}
@@ -129,15 +138,57 @@ const FormInput = (props: FormInputProps) => {
 	);
 };
 
-const Contact = () => {
+const encode = (data: any) => {
+	return Object.keys(data)
+		.map(
+			(key) =>
+				encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+		)
+		.join("&");
+};
+
+const ContactForm = () => {
+	const [messageSent, setMessageSent] = useState(false);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [subject, setSubject] = useState("");
+	const [message, setMessage] = useState("");
+
+	const handleSubmit = (e: any) => {
+		e.preventDefault();
+
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: encode({
+				"form-name": "contact",
+				name: name,
+				email: email,
+				subject: subject,
+				message: message,
+			}),
+		})
+			.then(() => setMessageSent(true))
+			.catch((error) => alert(error));
+	};
+
+	const sendDisable =
+		messageSent ||
+		name.length === 0 ||
+		email.length === 0 ||
+		subject.length === 0 ||
+		message.length === 0;
+
 	return (
 		<div className="m-5">
 			<Title text="Επικοινωνία" />
 			<form
 				className="text-white h-[500px]"
 				data-netlify={true}
+				netlify-honeypot="bot-field"
 				name="contactForm"
 				method="POST"
+				onSubmit={handleSubmit}
 			>
 				<input type="hidden" name="form-name" value="contactForm" />
 				<FormInput
@@ -145,25 +196,43 @@ const Contact = () => {
 					type="text"
 					autoComplete="name"
 					name="name"
+					onChange={(e) => {
+						setName(e.target.value);
+					}}
 				/>
 				<FormInput
 					placeholder="E-mail"
 					type="email"
 					autoComplete="email"
 					name="email"
+					onChange={(e) => {
+						setEmail(e.target.value);
+					}}
 				/>
-				<FormInput placeholder="Θέμα" type="text" name="subject" />
+				<FormInput
+					placeholder="Θέμα"
+					type="text"
+					name="subject"
+					onChange={(e) => {
+						setSubject(e.target.value);
+					}}
+				/>
 				<FormInput
 					placeholder="Μήνυμα"
 					type="text"
 					name="message"
+					onChange={(e) => {
+						setMessage(e.target.value);
+					}}
 					large
 				/>
 				<button
 					className="bg-black shadow w-full mx-auto rounded-md my-4 py-2 px-4 text-xl font-bold hover:text-black hover:bg-gray-200 hover:ring hover:ring-white duration-300"
 					type="submit"
+					disabled={sendDisable}
+					onClick={() => setMessageSent(true)}
 				>
-					Αποστολή
+					{!messageSent ? "Αποστολή" : "Στάλθηκε!"}
 				</button>
 			</form>
 		</div>
@@ -175,7 +244,7 @@ export default function SectionB() {
 		<div className="p-2 h-auto bg-stone-900">
 			<div className="items-center flex flex-col md:flex-row w-[90%] mx-auto justify-around">
 				<Introduction />
-				<Contact />
+				<ContactForm />
 			</div>
 		</div>
 	);
