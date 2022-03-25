@@ -15,6 +15,11 @@ module.exports = {
 			vollkorn: ["Vollkorn", "serif"],
 			notoserif: ["Noto Serif Display", "serif"],
 		},
+		extend: {
+			colors: {
+				primary: "#A24F70",
+			},
+		},
 	},
 	plugins: [],
 };
