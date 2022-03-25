@@ -52,7 +52,7 @@ const IMAGE_PROPS = [
 		imgPosition:
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
 		textPosition:
-			"text-left right-2 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
+			"text-center right-5 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];

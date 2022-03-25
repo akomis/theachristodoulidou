@@ -88,12 +88,12 @@ const INTRO_TEXT = `Η Θέα Χριστοδουλίδου, μετά το πρώ
 ανθρώπινης φύσης και που τελικά μας οδηγεί στην απόλυτη κάθαρση...
 Ελίζα Χριστοφόρου, Φιλόλογος`;
 
-const Introduction = () => {
+const Preface = () => {
 	return (
 		<div className="m-5 ">
 			<Title text="Πρόλογος" />
 			<div className="h-[500px] overflow-y-scroll">
-				<p className="text-xl text-justify sm:text-2xl text-gray-300 ">
+				<p className="text-xl sm:text-2xl text-gray-300 ">
 					{INTRO_TEXT}
 				</p>
 			</div>
@@ -180,7 +180,7 @@ const ContactForm = () => {
 		message.length === 0;
 
 	return (
-		<div className="m-5">
+		<div className="m-5 min-w-md max-w-lg">
 			<Title text="Επικοινωνία" />
 			<form
 				className="text-white h-[500px]"
@@ -240,9 +240,9 @@ const ContactForm = () => {
 
 export default function SectionB() {
 	return (
-		<div className="p-2 h-auto bg-stone-900">
+		<div className="py-12 px-2 md:px-5 lg:px-20 h-auto bg-stone-900">
 			<div className="items-center flex flex-col md:flex-row w-[90%] mx-auto justify-around">
-				<Introduction />
+				<Preface />
 				<ContactForm />
 			</div>
 		</div>
