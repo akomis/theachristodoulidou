@@ -136,7 +136,7 @@ const Contact = () => {
 				name="contactForm"
 				method="POST"
 			>
-				<input type="hidden" name="form-name" value="message" />
+				<input type="hidden" name="form-name" value="contactForm" />
 				<FormInput
 					placeholder="Όνομα"
 					type="text"
