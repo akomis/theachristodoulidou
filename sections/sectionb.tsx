@@ -133,8 +133,10 @@ const Contact = () => {
 			<form
 				className="text-white h-[500px]"
 				data-netlify={true}
-				onSubmit={() => {}}
+				name="contactForm"
+				method="POST"
 			>
+				<input type="hidden" name="form-name" value="message" />
 				<FormInput
 					placeholder="Όνομα"
 					type="text"
