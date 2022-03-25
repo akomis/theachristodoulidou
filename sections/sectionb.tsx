@@ -230,7 +230,6 @@ const ContactForm = () => {
 					className="bg-black shadow w-full mx-auto rounded-md my-4 py-2 px-4 text-xl font-bold hover:text-black hover:bg-gray-200 hover:ring hover:ring-white duration-300"
 					type="submit"
 					disabled={sendDisable}
-					onClick={() => setMessageSent(true)}
 				>
 					{!messageSent ? "Αποστολή" : "Στάλθηκε!"}
 				</button>
