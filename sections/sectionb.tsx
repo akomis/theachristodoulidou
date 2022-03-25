@@ -186,11 +186,11 @@ const ContactForm = () => {
 				className="text-white h-[500px]"
 				data-netlify={true}
 				netlify-honeypot="bot-field"
-				name="contactForm"
+				name="contact"
 				method="POST"
 				onSubmit={handleSubmit}
 			>
-				<input type="hidden" name="form-name" value="contactForm" />
+				<input type="hidden" name="form-name" value="contact" />
 				<FormInput
 					placeholder="Όνομα"
 					type="text"
