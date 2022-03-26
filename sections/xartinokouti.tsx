@@ -202,8 +202,8 @@ const Contact = () => {
 					)}
 				</button>
 			</form>
-			<div className="mt-2 flex flex-row justify-end items-center">
-				<div className="grow ">
+			<div className="h-[100px] mt-2 flex flex-row justify-end items-center">
+				<div className="grow">
 					<p className="text-white text-base sm:text-xl">
 						{"Τηλέφωνο παραγγελιών βιβλίου "}
 						<a
