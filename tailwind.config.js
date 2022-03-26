@@ -19,6 +19,9 @@ module.exports = {
 			colors: {
 				primary: "#A24F70",
 			},
+			dropShadow: {
+				dark: "0 10px 10px rgba(0, 0, 0, 0.75)",
+			},
 		},
 	},
 	plugins: [],

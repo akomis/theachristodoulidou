@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import Title from "../components/title";
-import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { AiFillInstagram, AiFillFacebook, AiFillPhone } from "react-icons/ai";
 import { FcOk } from "react-icons/fc";
 
 const INTRO_TEXT = [
@@ -63,7 +63,7 @@ const FormInput = (props: FormInputProps) => {
 	} = props;
 
 	const styles = `${
-		!readOnly ? "bg-white" : "bg-gray-300 text-black"
+		!readOnly ? "bg-white" : " bg-gray-300 text-black"
 	} mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
 
 	return large ? (
@@ -96,7 +96,6 @@ const Contact = () => {
 	const [messageSent, setMessageSent] = useState(false);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
 
 	const encode = (data: any) => {
@@ -120,7 +119,6 @@ const Contact = () => {
 				"form-name": "contact",
 				name: name,
 				email: email,
-				subject: subject,
 				message: message,
 			}),
 		})
@@ -132,7 +130,6 @@ const Contact = () => {
 		messageSent ||
 		name.length === 0 ||
 		email.length === 0 ||
-		subject.length === 0 ||
 		message.length === 0;
 
 	return (
@@ -170,16 +167,6 @@ const Contact = () => {
 					}}
 				/>
 				<FormInput
-					placeholder="Θέμα"
-					type="text"
-					name="subject"
-					value={subject}
-					readOnly={messageSent}
-					onChange={(e) => {
-						setSubject(e.target.value);
-					}}
-				/>
-				<FormInput
 					placeholder="Μήνυμα"
 					type="text"
 					name="message"
@@ -194,9 +181,11 @@ const Contact = () => {
 					className={`${
 						sendDisable
 							? "hover:cursor-not-allowed"
-							: "hover:text-black hover:bg-gray-200 hover:rounded-none hover:border-black hover:cursor-pointer duration-300"
+							: "hover:drop-shadow-dark hover:text-black hover:bg-primary hover:rounded-none hover:border-black hover:cursor-pointer duration-300"
 					} shadow ${
-						!messageSent ? "bg-black" : "bg-gray-300 text-black"
+						!messageSent
+							? "bg-black"
+							: "bg-primary text-black border-2 border-black"
 					} w-full rounded-md h-10 my-4 text-xl font-bold`}
 					type="submit"
 					disabled={sendDisable}
@@ -213,15 +202,32 @@ const Contact = () => {
 					)}
 				</button>
 			</form>
-			<div className="h-[60px] flex flex-row justify-end items-center">
+			<div className="mt-2 flex flex-row justify-end items-center">
+				<div className="grow ">
+					<p className="text-white text-base sm:text-xl">
+						{"Τηλέφωνο παραγγελιών βιβλίου "}
+						<a
+							className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
+							href="tel:+35796754716"
+						>
+							96754716
+						</a>
+					</p>
+				</div>
 				<a
-					className="ml-5"
+					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					href="tel:+35796754716"
+				>
+					<AiFillPhone size={60} />
+				</a>
+				<a
+					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.instagram.com/theachristodoulidou/"
 				>
 					<AiFillInstagram size={60} />
 				</a>
 				<a
-					className="ml-5"
+					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.facebook.com/theachristodoulidoupage/"
 				>
 					<AiFillFacebook size={60} />
@@ -231,14 +237,14 @@ const Contact = () => {
 	);
 };
 
-export default function SectionB() {
+export default function XartinoKouti() {
 	return (
 		<div className="py-12 px-2 md:px-5 lg:px-15 h-auto bg-stone-900">
-			<div className="flex flex-col md:flex-row w-[90%] max-w-[2000px] mx-auto">
-				<div className="m-10 flex-[2]">
+			<div className="flex flex-col md:flex-row w-full max-w-[2000px] mx-auto">
+				<div className="m-5 sm:m-10 md:m-15 flex-[2]">
 					<Preface />
 				</div>
-				<div className="m-10 flex-1">
+				<div className="m-5 sm:m-10 md:m-15 flex-1">
 					<Contact />
 				</div>
 			</div>
