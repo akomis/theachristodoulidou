@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 type imgProps = {
 	src: string;
@@ -52,7 +52,7 @@ const IMAGE_PROPS = [
 		imgPosition:
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
 		textPosition:
-			"text-left right-2 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
+			"text-center right-5 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
 		delay: 1000,
 	},
 ];
@@ -72,7 +72,7 @@ const Heading = () => {
 		>
 			<h1
 				className={`${
-					!mounted ? "text-white" : "text-[#A24F70]"
+					!mounted ? "text-white" : "text-primary"
 				} m-4 text-center text-5xl sm:text-7xl transition-colors duration-1000 delay-[2000ms] sm:w-auto font-vollkorn md:text-8xl`}
 			>
 				{TITLE}
@@ -112,6 +112,7 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 					width={imgProps.width}
 					height={imgProps.height}
 					layout={"responsive"}
+					priority
 				/>
 			</div>
 			<div
@@ -128,36 +129,6 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 	);
 };
 
-const ORDER_DETAILS = "Τηλέφωνο παραγγελιών βιβλίου ";
-const [TEL_CODE, TEL_NUMBER] = ["+357", "96754716"];
-
-const OrderBlock = () => {
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	return (
-		<div className="absolute bottom-0 w-full text-right h-[120px] pr-5 md:pr-[5%] lg:pr-[10%] flex flex-col justify-center items-end text-xl md:text-2xl bg-stone-900">
-			<div
-				className={`transition-opacity duration-1000 delay-[2200ms]
-				${!mounted ? "opacity-0" : "opacity-100"}`}
-			>
-				<p className="font-sans w-[200px] sm:w-[300px] md:w-[500px] text-gray-300">
-					{ORDER_DETAILS}
-				</p>
-				<a
-					href={`tel:${TEL_CODE}${TEL_NUMBER}`}
-					className="font-bold text-gray-300 hover:text-white hover:text-2xl md:hover:text-3xl lg:hover:text-4xl duration-300"
-				>
-					{TEL_NUMBER}
-				</a>
-			</div>
-		</div>
-	);
-};
-
 export default function Intro() {
 	const [textIndex, setTextIndex] = useState(-1);
 	const [pause, setPause] = useState(false);
@@ -165,9 +136,11 @@ export default function Intro() {
 
 	useEffect(() => {
 		if (!mounted) {
+			// Initial delay (3s) of the propshow (until everything shows up like title)
 			setTimeout(() => setTextIndex(0), 3000);
 			setMounted(true);
 		} else {
+			// Change prop every 6 seconds (propshow)
 			setTimeout(() => {
 				setPause(true);
 				setTimeout(() => {
@@ -182,7 +155,6 @@ export default function Intro() {
 
 	return (
 		<div className="relative h-full min-h-[1125px] bg-black">
-			<OrderBlock />
 			{IMAGE_PROPS.map((imgProps, i) => (
 				<InteractiveImage
 					key={i}
