@@ -41,22 +41,36 @@ type FormInputProps = {
 	placeholder: string;
 	type: string;
 	name: string;
+	value: string;
 	onChange: (e: ChangeEvent<any>) => void;
+	readOnly: boolean;
 	autoComplete?: string;
 	large?: boolean;
 };
 
 const FormInput = (props: FormInputProps) => {
-	const { placeholder, type, name, onChange, autoComplete, large } = props;
+	const {
+		placeholder,
+		type,
+		name,
+		value,
+		onChange,
+		readOnly,
+		autoComplete,
+		large,
+	} = props;
 
-	const styles =
-		"mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none";
+	const styles = `${
+		!readOnly ? "bg-white" : "bg-gray-300 text-black"
+	} mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
 
 	return large ? (
 		<textarea
 			className={`${styles} min-h-[325px] max-h-[325px]`}
 			name={name}
+			value={value}
 			onChange={onChange}
+			readOnly={readOnly}
 			placeholder={placeholder}
 			autoComplete={autoComplete ?? "none"}
 			required
@@ -65,7 +79,9 @@ const FormInput = (props: FormInputProps) => {
 		<input
 			className={`${styles} h-10`}
 			name={name}
+			value={value}
 			onChange={onChange}
+			readOnly={readOnly}
 			placeholder={placeholder}
 			type={type}
 			autoComplete={autoComplete ?? "none"}
@@ -74,21 +90,23 @@ const FormInput = (props: FormInputProps) => {
 	);
 };
 
-const encode = (data: any) => {
-	return Object.keys(data)
-		.map(
-			(key) =>
-				encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-		)
-		.join("&");
-};
-
 const ContactForm = () => {
 	const [messageSent, setMessageSent] = useState(false);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
+
+	const encode = (data: any) => {
+		return Object.keys(data)
+			.map(
+				(key) =>
+					encodeURIComponent(key) +
+					"=" +
+					encodeURIComponent(data[key])
+			)
+			.join("&");
+	};
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
@@ -132,6 +150,8 @@ const ContactForm = () => {
 					type="text"
 					autoComplete="name"
 					name="name"
+					value={name}
+					readOnly={messageSent}
 					onChange={(e) => {
 						setName(e.target.value);
 					}}
@@ -141,6 +161,8 @@ const ContactForm = () => {
 					type="email"
 					autoComplete="email"
 					name="email"
+					value={email}
+					readOnly={messageSent}
 					onChange={(e) => {
 						setEmail(e.target.value);
 					}}
@@ -149,6 +171,8 @@ const ContactForm = () => {
 					placeholder="Θέμα"
 					type="text"
 					name="subject"
+					value={subject}
+					readOnly={messageSent}
 					onChange={(e) => {
 						setSubject(e.target.value);
 					}}
@@ -157,6 +181,8 @@ const ContactForm = () => {
 					placeholder="Μήνυμα"
 					type="text"
 					name="message"
+					value={message}
+					readOnly={messageSent}
 					onChange={(e) => {
 						setMessage(e.target.value);
 					}}
@@ -167,7 +193,9 @@ const ContactForm = () => {
 						sendDisable
 							? "hover:cursor-not-allowed"
 							: "hover:text-black hover:bg-gray-200 hover:rounded-none hover:border-black hover:cursor-pointer duration-300"
-					} shadow bg-black w-full rounded-md h-10 my-4 text-xl font-bold`}
+					} shadow ${
+						!messageSent ? "bg-black" : "bg-gray-300 text-black"
+					} w-full rounded-md h-10 my-4 text-xl font-bold`}
 					type="submit"
 					disabled={sendDisable}
 				>
