@@ -17,9 +17,9 @@ const INTRO_TEXT = [
 
 const Preface = () => {
 	return (
-		<div className="px-5 pb-3 rounded-lg bg-gradient-to-t from-black via-transparent to-transparent antialiased">
+		<div className="px-5 pb-3 rounded-lg gradient-bg">
 			<Title text="Πρόλογος" />
-			<div className="h-[500px] scroll-smooth overflow-y-scroll">
+			<div className="h-[500px] scroll-smooth antialiased overflow-y-scroll">
 				{INTRO_TEXT.map((paragraph, i) => (
 					<p
 						key={`paragraph-${i}`}
