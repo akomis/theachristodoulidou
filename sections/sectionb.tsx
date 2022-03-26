@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import Title from "../components/title";
+import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { FcOk } from "react-icons/fc";
 
 const INTRO_TEXT = [
 	"Η Θέα Χριστοδουλίδου, μετά το πρώτο της μυθιστόρημα «η Κούκλα»,επανέρχεται στην πεζογραφία αυτή τη φορά με «Το χάρτινο κουτί». Μια σύγχρονη συγκλονιστική ιστορία που παραπέμπει σε αρχαία ελληνική τραγωδία μιας και η πλοκή περιέχει όλα τα στάδια του σχήματος: ύβρις→ άτη→ νέμεσις→ τίσις. Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
@@ -66,7 +68,7 @@ const FormInput = (props: FormInputProps) => {
 
 	return large ? (
 		<textarea
-			className={`${styles} min-h-[325px] max-h-[325px]`}
+			className={`${styles} min-h-[250px] max-h-[250px]`}
 			name={name}
 			value={value}
 			onChange={onChange}
@@ -90,7 +92,7 @@ const FormInput = (props: FormInputProps) => {
 	);
 };
 
-const ContactForm = () => {
+const Contact = () => {
 	const [messageSent, setMessageSent] = useState(false);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -199,9 +201,32 @@ const ContactForm = () => {
 					type="submit"
 					disabled={sendDisable}
 				>
-					{!messageSent ? "Αποστολή" : "Στάλθηκε!"}
+					{!messageSent ? (
+						"Αποστολή"
+					) : (
+						<div className="flex items-center justify-center">
+							{"Στάλθηκε!"}
+							<div className="ml-2">
+								<FcOk />
+							</div>
+						</div>
+					)}
 				</button>
 			</form>
+			<div className="h-[60px] flex flex-row justify-end items-center">
+				<a
+					className="ml-5"
+					href="https://www.instagram.com/theachristodoulidou/"
+				>
+					<AiFillInstagram size={60} />
+				</a>
+				<a
+					className="ml-5"
+					href="https://www.facebook.com/theachristodoulidoupage/"
+				>
+					<AiFillFacebook size={60} />
+				</a>
+			</div>
 		</div>
 	);
 };
@@ -214,7 +239,7 @@ export default function SectionB() {
 					<Preface />
 				</div>
 				<div className="m-10 flex-1">
-					<ContactForm />
+					<Contact />
 				</div>
 			</div>
 		</div>
