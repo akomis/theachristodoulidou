@@ -215,19 +215,19 @@ const Contact = () => {
 					</p>
 				</div>
 				<a
-					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="tel:+35796754716"
 				>
 					<AiFillPhone size={60} />
 				</a>
 				<a
-					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.instagram.com/theachristodoulidou/"
 				>
 					<AiFillInstagram size={60} />
 				</a>
 				<a
-					className="mx-3 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.facebook.com/theachristodoulidoupage/"
 				>
 					<AiFillFacebook size={60} />
