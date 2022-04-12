@@ -19,22 +19,24 @@ const INTRO_TEXT = [
 
 const Preface = () => {
 	return (
-		<div className="px-5 pb-3 rounded-lg gradient-bg">
-			<Title text="Πρόλογος" />
-			<div className="h-[500px] scroll-smooth antialiased overflow-y-scroll">
-				{INTRO_TEXT.map((paragraph, i) => (
-					<p
-						key={`paragraph-${i}`}
-						className="mb-5 text-base sm:text-xl text-gray-200"
-					>
-						{paragraph}
-					</p>
-				))}
+		<div className="rounded-lg gradient-bg">
+			<div className="px-5 pb-3">
+				<Title text="Πρόλογος" />
+				<div className="h-[500px] scroll-smooth antialiased overflow-y-scroll">
+					{INTRO_TEXT.map((paragraph, i) => (
+						<p
+							key={`paragraph-${i}`}
+							className="mb-5 text-base sm:text-xl text-gray-200"
+						>
+							{paragraph}
+						</p>
+					))}
+				</div>
+				<hr className="mt-4 mb-2 w-1/2" />
+				<p className="font-notoserif text-base sm:text-xl text-gray-300">
+					{"Ελίζα Χριστοφόρου, Φιλόλογος"}
+				</p>
 			</div>
-			<hr className="mt-4 mb-2 w-1/2" />
-			<p className="font-notoserif text-base sm:text-xl text-gray-300">
-				{"Ελίζα Χριστοφόρου, Φιλόλογος"}
-			</p>
 		</div>
 	);
 };
@@ -64,7 +66,7 @@ const FormInput = (props: FormInputProps) => {
 
 	const styles = `${
 		!readOnly ? "bg-white" : " bg-gray-300 text-black"
-	} mx-1 my-2 p-4 w-full shadow border-black text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
+	} mx-1 my-2 p-4 w-full shadow text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
 
 	return large ? (
 		<textarea
@@ -247,6 +249,16 @@ export default function XartinoKouti() {
 				<div className="m-5 sm:m-10 md:m-15 flex-1">
 					<Contact />
 				</div>
+			</div>
+			<div className="flex h-[300px] sm:h-[500px] lg:h-[650px] max-w-[2000px] mx-auto justify-center align-middle">
+				<iframe
+					className="rounded border-4 border-black w-full m-5 sm:m-10 md:m-15"
+					src="https://www.youtube.com/embed/_O2OvWLf0rA"
+					title="«ΤΟ ΧΑΡΤΙΝΟ ΚΟΥΤΙ», ΜΙΑ ΣΥΓΧΡΟΝΗ ΣΥΓΚΛΟΝΙΣΤΙΚΗ ΙΣΤΟΡΙΑ"
+					allow="autoplay; encrypted-media; picture-in-picture"
+					allowFullScreen
+					frameBorder="0"
+				></iframe>
 			</div>
 		</div>
 	);
