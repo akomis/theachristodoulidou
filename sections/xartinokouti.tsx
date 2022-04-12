@@ -250,7 +250,7 @@ export default function XartinoKouti() {
 					<Contact />
 				</div>
 			</div>
-			<div className="flex h-[300px] sm:h-[500px] lg:h-[650px] max-w-[2000px] mx-auto justify-center align-middle">
+			<div className="flex h-[300px] sm:h-[500px] lg:h-[1000px] max-w-[2000px] mx-auto justify-center align-middle">
 				<iframe
 					className="rounded border-4 border-black w-full m-5 sm:m-10 md:m-15"
 					src="https://www.youtube.com/embed/_O2OvWLf0rA"
