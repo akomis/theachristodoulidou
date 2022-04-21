@@ -1,10 +1,16 @@
 import { ChangeEvent, useState } from "react";
 import Title from "../components/title";
-import { AiFillInstagram, AiFillFacebook, AiFillPhone } from "react-icons/ai";
-import { FcOk } from "react-icons/fc";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {
+	AiFillInstagram,
+	AiFillFacebook,
+	AiFillPhone,
+	AiFillCheckCircle,
+} from "react-icons/ai";
 
 const INTRO_TEXT = [
-	"Η Θέα Χριστοδουλίδου, μετά το πρώτο της μυθιστόρημα «η Κούκλα»,επανέρχεται στην πεζογραφία αυτή τη φορά με «Το χάρτινο κουτί». Μια σύγχρονη συγκλονιστική ιστορία που παραπέμπει σε αρχαία ελληνική τραγωδία μιας και η πλοκή περιέχει όλα τα στάδια του σχήματος: ύβρις→ άτη→ νέμεσις→ τίσις. Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
+	"Η Θέα Χριστοδουλίδου, μετά το πρώτο της μυθιστόρημα «η Κούκλα», επανέρχεται στην πεζογραφία αυτή τη φορά με «Το χάρτινο κουτί». Μια σύγχρονη συγκλονιστική ιστορία που παραπέμπει σε αρχαία ελληνική τραγωδία μιας και η πλοκή περιέχει όλα τα στάδια του σχήματος: ύβρις→ άτη→ νέμεσις→ τίσις. Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
 	"Μια γυναίκα που ενώ το μόνο που θέλησε «ήταν να ζήσει μια ήσυχη ζωή, όπως τόσοι άνθρωποι σ’ αυτή τη γη», βρέθηκε στη δύνη συμβάντων και γεγονότων που την οδήγησαν σε ένα κακοτράχαλο μονοπάτι χωρίς επιστροφή.",
 	"Μια γυναίκα, που όπως η ίδια ομολογεί, «μια άσπρη κόλλα χαρτί ήταν η δική μου ζωή, που τίποτα δεν με άφησαν να γράψω επάνω. Άλλοι κρατούσανε τις πένες και τα μολύβια και γράφανε αυτά που θέλανε εκείνοι».",
 	"Η Θέα Χριστοδουλίδου παίρνοντας τη δική της πένα δίνει σώμα και πνοή στη Φαίδρα και την βάζει να αφηγηθεί την τραγική ιστορία της. Άλλοτε σε πρώτο πρόσωπο, άλλοτε διά μέσω του επινοημένου αφηγητή, καταθέτει στον αναγνώστη κάτι πολύ περισσότερο από ένα μυθιστόρημα:",
@@ -135,7 +141,7 @@ const Contact = () => {
 		message.length === 0;
 
 	return (
-		<div className="">
+		<div>
 			<Title text="Επικοινωνία" />
 			<form
 				className="text-white flex flex-col justify-center items-center"
@@ -198,7 +204,7 @@ const Contact = () => {
 						<div className="flex items-center justify-center">
 							{"Στάλθηκε!"}
 							<div className="ml-2">
-								<FcOk />
+								<AiFillCheckCircle />
 							</div>
 						</div>
 					)}
@@ -239,9 +245,25 @@ const Contact = () => {
 	);
 };
 
+type videoProp = {
+	src: string;
+	title: string;
+};
+
+const VIDEO_PROPS = [
+	{
+		src: "https://www.youtube.com/embed/_O2OvWLf0rA",
+		title: "«ΤΟ ΧΑΡΤΙΝΟ ΚΟΥΤΙ», ΜΙΑ ΣΥΓΧΡΟΝΗ ΣΥΓΚΛΟΝΙΣΤΙΚΗ ΙΣΤΟΡΙΑ",
+	},
+	{
+		src: "https://www.youtube.com/embed/vuh5aBGut64",
+		title: 'Θέα Χριστοδουλίδου: "Είμαι κατάφορα ενάντια στον διδακτισμό"',
+	},
+];
+
 export default function XartinoKouti() {
 	return (
-		<div className="py-12 px-2 md:px-5 lg:px-15 h-auto bg-stone-900">
+		<div className="py-12 px-2 md:px-5 lg:px-15 h-auto bg-stone-800">
 			<div className="flex flex-col md:flex-row w-full max-w-[2000px] mx-auto">
 				<div className="m-5 sm:m-10 md:m-15 flex-[2]">
 					<Preface />
@@ -250,15 +272,33 @@ export default function XartinoKouti() {
 					<Contact />
 				</div>
 			</div>
-			<div className="flex h-[300px] sm:h-[500px] lg:h-[1000px] max-w-[2000px] mx-auto justify-center align-middle">
-				<iframe
-					className="rounded border-4 border-black w-full m-5 sm:m-10 md:m-15"
-					src="https://www.youtube.com/embed/_O2OvWLf0rA"
-					title="«ΤΟ ΧΑΡΤΙΝΟ ΚΟΥΤΙ», ΜΙΑ ΣΥΓΧΡΟΝΗ ΣΥΓΚΛΟΝΙΣΤΙΚΗ ΙΣΤΟΡΙΑ"
-					allow="autoplay; encrypted-media; picture-in-picture"
-					allowFullScreen
-					frameBorder="0"
-				></iframe>
+			<div className="w-full max-w-[2000px] mx-auto">
+				<Carousel
+					className="m-5 sm:m-10 md:m-15"
+					centerMode
+					swipeable
+					emulateTouch
+					stopOnHover
+					showIndicators
+					dynamicHeight
+					autoFocus
+					showThumbs={false}
+					showStatus={false}
+					aria-label="videos"
+				>
+					{VIDEO_PROPS.map((videoProps, i) => (
+						<div key={i} className="min-w-[300px]">
+							<iframe
+								className="rounded border-4 border-black h-[300px] sm:h-[500px] lg:h-[800px]"
+								src={videoProps.src}
+								title={videoProps.title}
+								allow="autoplay; encrypted-media; picture-in-picture"
+								allowFullScreen
+								frameBorder="0"
+							></iframe>
+						</div>
+					))}
+				</Carousel>
 			</div>
 		</div>
 	);
