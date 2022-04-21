@@ -278,7 +278,6 @@ export default function XartinoKouti() {
 					centerMode
 					swipeable
 					emulateTouch
-					stopOnHover
 					showIndicators
 					dynamicHeight
 					autoFocus
@@ -289,10 +288,10 @@ export default function XartinoKouti() {
 					{VIDEO_PROPS.map((videoProps, i) => (
 						<div key={i} className="min-w-[300px]">
 							<iframe
-								className="rounded border-4 border-black h-[300px] sm:h-[500px] lg:h-[800px]"
+								className="rounded hover:drop-shadow-dark duration-200 border-4 border-black h-[300px] sm:h-[500px] lg:h-[800px]"
 								src={videoProps.src}
 								title={videoProps.title}
-								allow="autoplay; encrypted-media; picture-in-picture"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 								frameBorder="0"
 							></iframe>
