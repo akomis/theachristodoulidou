@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	.section {
+		@apply py-10 px-2 flex flex-col;
+	}
+
+	.container {
+		@apply flex justify-center mx-auto;
+	}
+
+	.subcontainer {
+		@apply m-6 sm:m-8 md:m-12;
+	}
+
+	.h-subcontainer {
+		@apply h-[600px];
+	}
+}
+
 @layer components {
 	.gradient-bg {
 		background: rgb(0, 0, 0);
