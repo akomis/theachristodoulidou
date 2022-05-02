@@ -25,10 +25,9 @@ const INTRO_TEXT = [
 
 const Preface = () => {
 	return (
-		<div className="rounded-lg gradient-bg">
-			<div className="px-5 pb-3">
-				<Title text="Πρόλογος" />
-				<div className="h-[500px] scroll-smooth antialiased overflow-y-scroll">
+		<div className="h-subcontainer flex flex-col px-5 pb-3 rounded-lg gradient-bg">
+			<div className="h-auto overflow-y-scroll ">
+				<div className="scroll-smooth antialiased">
 					{INTRO_TEXT.map((paragraph, i) => (
 						<p
 							key={`paragraph-${i}`}
@@ -38,11 +37,11 @@ const Preface = () => {
 						</p>
 					))}
 				</div>
-				<hr className="mt-4 mb-2 w-1/2" />
-				<p className="font-notoserif text-base sm:text-xl text-gray-300">
-					{"Ελίζα Χριστοφόρου, Φιλόλογος"}
-				</p>
 			</div>
+			<hr className="mt-4 mb-2 w-1/2" />
+			<p className="font-notoserif text-base sm:text-xl text-gray-300">
+				{"Ελίζα Χριστοφόρου, Φιλόλογος"}
+			</p>
 		</div>
 	);
 };
@@ -71,12 +70,12 @@ const FormInput = (props: FormInputProps) => {
 	} = props;
 
 	const styles = `${
-		!readOnly ? "bg-white" : " bg-gray-300 text-black"
-	} mx-1 my-2 p-4 w-full shadow text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
+		!readOnly ? "bg-white" : "bg-gray-300 text-black"
+	} my-2 p-4 w-full shadow text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
 
 	return large ? (
 		<textarea
-			className={`${styles} min-h-[250px] max-h-[250px]`}
+			className={`${styles} min-h-[300px] max-h-[300px]`}
 			name={name}
 			value={value}
 			onChange={onChange}
@@ -141,8 +140,7 @@ const Contact = () => {
 		message.length === 0;
 
 	return (
-		<div>
-			<Title text="Επικοινωνία" />
+		<div className="h-subcontainer flex flex-col justify-between">
 			<form
 				className="text-white flex flex-col justify-center items-center"
 				data-netlify={true}
@@ -194,7 +192,7 @@ const Contact = () => {
 						!messageSent
 							? "bg-black"
 							: "bg-primary text-black border-2 border-black"
-					} w-full rounded-md h-10 my-4 text-xl font-bold`}
+					} w-full rounded-md h-10 mt-4 text-xl font-bold`}
 					type="submit"
 					disabled={sendDisable}
 				>
@@ -210,32 +208,30 @@ const Contact = () => {
 					)}
 				</button>
 			</form>
-			<div className="h-[100px] mt-2 flex flex-row justify-end items-center">
-				<div className="grow">
-					<p className="text-white text-base sm:text-xl">
-						{"Τηλέφωνο παραγγελιών βιβλίου "}
-						<a
-							className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
-							href="tel:+35796754716"
-						>
-							96754716
-						</a>
-					</p>
-				</div>
+			<div className="h-[100px] flex flex-row justify-between items-center">
+				<p className="text-white text-base sm:text-lg">
+					{"Τηλέφωνο παραγγελιών βιβλίου "}
+					<a
+						className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
+						href="tel:+35796754716"
+					>
+						96754716
+					</a>
+				</p>
 				<a
-					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="tel:+35796754716"
 				>
 					<AiFillPhone size={60} />
 				</a>
 				<a
-					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.instagram.com/theachristodoulidou/"
 				>
 					<AiFillInstagram size={60} />
 				</a>
 				<a
-					className="ml-2 sm:ml-10 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+					className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 					href="https://www.facebook.com/theachristodoulidoupage/"
 				>
 					<AiFillFacebook size={60} />
@@ -243,11 +239,6 @@ const Contact = () => {
 			</div>
 		</div>
 	);
-};
-
-type videoProp = {
-	src: string;
-	title: string;
 };
 
 const VIDEO_PROPS = [
@@ -259,45 +250,56 @@ const VIDEO_PROPS = [
 		src: "https://www.youtube.com/embed/vuh5aBGut64",
 		title: 'Θέα Χριστοδουλίδου: "Είμαι κατάφορα ενάντια στον διδακτισμό"',
 	},
+	{
+		src: "https://www.youtube.com/embed/_b6MHMlMjqc",
+		title: 'Το Χάρτινο Κουτί - "ΗΡΘΕ & ΕΔΕΣΕ"',
+	},
 ];
 
 export default function XartinoKouti() {
 	return (
-		<div className="py-12 px-2 md:px-5 lg:px-15 h-auto bg-stone-800">
-			<div className="flex flex-col md:flex-row w-full max-w-[2000px] mx-auto">
-				<div className="m-5 sm:m-10 md:m-15 flex-[2]">
+		<div className="section bg-stone-800">
+			<div className="container flex-col md:flex-row">
+				<div className="subcontainer flex-[3]">
+					<Title text="Πρόλογος" />
 					<Preface />
 				</div>
-				<div className="m-5 sm:m-10 md:m-15 flex-1">
+				<div className="subcontainer flex-[2]">
+					<Title text="Επικοινωνία" />
 					<Contact />
 				</div>
 			</div>
-			<div className="w-full max-w-[2000px] mx-auto">
-				<Carousel
-					className="m-5 sm:m-10 md:m-15"
-					centerMode
-					swipeable
-					emulateTouch
-					showIndicators
-					dynamicHeight
-					autoFocus
-					showThumbs={false}
-					showStatus={false}
-					aria-label="videos"
-				>
-					{VIDEO_PROPS.map((videoProps, i) => (
-						<div key={i} className="min-w-[300px]">
-							<iframe
-								className="rounded hover:drop-shadow-dark duration-200 border-4 border-black h-[300px] sm:h-[500px] lg:h-[800px]"
-								src={videoProps.src}
-								title={videoProps.title}
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-								frameBorder="0"
-							></iframe>
-						</div>
-					))}
-				</Carousel>
+			<div className="container">
+				<div className="subcontainer">
+					<Carousel
+						centerMode
+						swipeable
+						emulateTouch
+						showIndicators
+						infiniteLoop
+						dynamicHeight
+						autoPlay
+						interval={5000}
+						transitionTime={500}
+						centerSlidePercentage={100}
+						showThumbs={false}
+						showStatus={false}
+						aria-label="videos"
+					>
+						{VIDEO_PROPS.map((videoProps, i) => (
+							<div key={i}>
+								<iframe
+									className="rounded hover:drop-shadow-dark duration-200 border-4 border-black h-[200px] sm:h-[400px]"
+									src={videoProps.src}
+									title={videoProps.title}
+									allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
+									frameBorder="0"
+								></iframe>
+							</div>
+						))}
+					</Carousel>
+				</div>
 			</div>
 		</div>
 	);
