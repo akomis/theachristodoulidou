@@ -209,7 +209,7 @@ const Contact = () => {
 				</button>
 			</form>
 			<div className="h-[100px] flex flex-row justify-between items-center">
-				<p className="text-white text-base sm:text-xl">
+				<p className="text-white text-base sm:text-lg">
 					{"Τηλέφωνο παραγγελιών βιβλίου "}
 					<a
 						className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
@@ -260,11 +260,11 @@ export default function XartinoKouti() {
 	return (
 		<div className="section bg-stone-800">
 			<div className="container flex-col md:flex-row">
-				<div className="subcontainer flex-[2]">
+				<div className="subcontainer flex-[3]">
 					<Title text="Πρόλογος" />
 					<Preface />
 				</div>
-				<div className="subcontainer flex-[1]">
+				<div className="subcontainer flex-[2]">
 					<Title text="Επικοινωνία" />
 					<Contact />
 				</div>
