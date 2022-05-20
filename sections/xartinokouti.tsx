@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import Title from "../components/title";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import {
 	AiFillInstagram,
 	AiFillFacebook,
@@ -55,6 +55,7 @@ type FormInputProps = {
 	readOnly: boolean;
 	autoComplete?: string;
 	large?: boolean;
+	required?: boolean;
 };
 
 const FormInput = (props: FormInputProps) => {
@@ -67,6 +68,7 @@ const FormInput = (props: FormInputProps) => {
 		readOnly,
 		autoComplete,
 		large,
+		required,
 	} = props;
 
 	const styles = `${
@@ -75,14 +77,14 @@ const FormInput = (props: FormInputProps) => {
 
 	return large ? (
 		<textarea
-			className={`${styles} min-h-[300px] max-h-[300px]`}
+			className={`${styles} min-h-[150px] max-h-[150px]`}
 			name={name}
 			value={value}
 			onChange={onChange}
 			readOnly={readOnly}
 			placeholder={placeholder}
 			autoComplete={autoComplete ?? "none"}
-			required
+			required={required ?? false}
 		/>
 	) : (
 		<input
@@ -94,7 +96,7 @@ const FormInput = (props: FormInputProps) => {
 			placeholder={placeholder}
 			type={type}
 			autoComplete={autoComplete ?? "none"}
-			required
+			required={required ?? false}
 		/>
 	);
 };
@@ -103,6 +105,8 @@ const Contact = () => {
 	const [messageSent, setMessageSent] = useState(false);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
+	const [telephone, setTelephone] = useState("");
+	const [acs, setAcs] = useState("");
 	const [message, setMessage] = useState("");
 
 	const encode = (data: any) => {
@@ -127,17 +131,15 @@ const Contact = () => {
 				name: name,
 				email: email,
 				message: message,
+				telephone: telephone,
+				acs: acs,
 			}),
 		})
 			.then(() => setMessageSent(true))
 			.catch((error) => alert(error));
 	};
 
-	const sendDisable =
-		messageSent ||
-		name.length === 0 ||
-		email.length === 0 ||
-		message.length === 0;
+	const sendDisable = messageSent || message.length === 0;
 
 	return (
 		<div className="h-subcontainer flex flex-col justify-between">
@@ -173,7 +175,28 @@ const Contact = () => {
 					}}
 				/>
 				<FormInput
-					placeholder="Μήνυμα"
+					placeholder="Τηλέφωνο"
+					type="telephone"
+					autoComplete="telephone"
+					name="telephone"
+					value={telephone}
+					readOnly={messageSent}
+					onChange={(e) => {
+						!isNaN(e.target.value) && setTelephone(e.target.value);
+					}}
+				/>
+				<FormInput
+					placeholder="Τοποθεσία ACS"
+					type="text"
+					name="acs"
+					value={acs}
+					readOnly={messageSent}
+					onChange={(e) => {
+						setAcs(e.target.value);
+					}}
+				/>
+				<FormInput
+					placeholder="Μήνυμα *"
 					type="text"
 					name="message"
 					value={message}
@@ -182,6 +205,7 @@ const Contact = () => {
 						setMessage(e.target.value);
 					}}
 					large
+					required
 				/>
 				<button
 					className={`${
@@ -241,21 +265,6 @@ const Contact = () => {
 	);
 };
 
-const VIDEO_PROPS = [
-	{
-		src: "https://www.youtube.com/embed/_O2OvWLf0rA",
-		title: "«ΤΟ ΧΑΡΤΙΝΟ ΚΟΥΤΙ», ΜΙΑ ΣΥΓΧΡΟΝΗ ΣΥΓΚΛΟΝΙΣΤΙΚΗ ΙΣΤΟΡΙΑ",
-	},
-	{
-		src: "https://www.youtube.com/embed/vuh5aBGut64",
-		title: 'Θέα Χριστοδουλίδου: "Είμαι κατάφορα ενάντια στον διδακτισμό"',
-	},
-	{
-		src: "https://www.youtube.com/embed/_b6MHMlMjqc",
-		title: 'Το Χάρτινο Κουτί - "ΗΡΘΕ & ΕΔΕΣΕ"',
-	},
-];
-
 export default function XartinoKouti() {
 	return (
 		<div className="section bg-stone-800">
@@ -270,35 +279,17 @@ export default function XartinoKouti() {
 				</div>
 			</div>
 			<div className="container">
-				<div className="subcontainer">
-					<Carousel
-						centerMode
-						swipeable
-						emulateTouch
-						showIndicators
-						infiniteLoop
-						dynamicHeight
-						autoPlay
-						interval={5000}
-						transitionTime={500}
-						centerSlidePercentage={100}
-						showThumbs={false}
-						showStatus={false}
-						aria-label="videos"
-					>
-						{VIDEO_PROPS.map((videoProps, i) => (
-							<div key={i}>
-								<iframe
-									className="rounded hover:drop-shadow-dark duration-200 border-4 border-black h-[200px] sm:h-[400px]"
-									src={videoProps.src}
-									title={videoProps.title}
-									allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowFullScreen
-									frameBorder="0"
-								></iframe>
-							</div>
-						))}
-					</Carousel>
+				<div className="subcontainer w-full hover:drop-shadow-dark duration-200">
+					<div className="rounded  border-4 border-black">
+						<LiteYouTubeEmbed
+							playlist={true}
+							id={"PLuhlsr-P09NaUH8iDRDtuBH7DuTkaswhL"}
+							title={"Το Χάρτινο Κουτί - Θέα Χριστοδουλίδου"}
+							playlistCoverId="_b6MHMlMjqc"
+							poster={"sddefault"}
+							webp
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

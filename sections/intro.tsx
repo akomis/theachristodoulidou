@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import doll from "../public/images/intro/doll.webp";
+import tree from "../public/images/intro/tree.webp";
+import girl from "../public/images/intro/girl.webp";
 
 type imgProps = {
-	src: string;
-	alt: string;
-	width: number;
-	height: number;
+	src: StaticImageData;
 	imgPosition: string;
 	textPosition: string;
 	delay: number;
@@ -20,13 +20,11 @@ const BG_TEXT = [
 	"Μια ιστορία που ψηλαφεί τις πιο σκοτεινές περιοχές της ανθρώπινης φύσης και που τελικά μας οδηγεί στην απόλυτη κάθαρση.",
 	"Ένα μυθιστόρημα που αξίζει να διαβαστεί και να ταξιδέψει σε πολλά χέρια.",
 ];
-const DEFAULT_ALT = "To Xartino Kouti Book Cover - Το Χάρτινο Κουτί Εξώφυλλο";
+const DEFAULT_IMG_INTRO_ALT =
+	"To Xartino Kouti Book Cover - Το Χάρτινο Κουτί Εξώφυλλο";
 const IMAGE_PROPS = [
 	{
-		src: "/images/intro/doll.png",
-		alt: DEFAULT_ALT,
-		width: 446,
-		height: 179,
+		src: doll,
 		imgPosition:
 			"-rotate-[20deg] -left-10 top-20 w-[200px] sm:w-[250px] lg:w-[300px]",
 		textPosition:
@@ -34,10 +32,7 @@ const IMAGE_PROPS = [
 		delay: 300,
 	},
 	{
-		src: "/images/intro/tree.png",
-		alt: DEFAULT_ALT,
-		width: 1424,
-		height: 721,
+		src: tree,
 		imgPosition:
 			"-right-10 top-[200px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		textPosition:
@@ -45,10 +40,7 @@ const IMAGE_PROPS = [
 		delay: 800,
 	},
 	{
-		src: "/images/intro/girl.png",
-		alt: DEFAULT_ALT,
-		width: 1078,
-		height: 1135,
+		src: girl,
 		imgPosition:
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
 		textPosition:
@@ -108,10 +100,9 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 			>
 				<Image
 					src={imgProps.src}
-					alt={imgProps.alt}
-					width={imgProps.width}
-					height={imgProps.height}
+					alt={DEFAULT_IMG_INTRO_ALT}
 					layout={"responsive"}
+					placeholder="blur"
 					priority
 				/>
 			</div>
