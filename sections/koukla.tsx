@@ -33,7 +33,7 @@ const Ebook = () => {
 				</h4>
 				<OrderButton
 					ebookLinks={EBOOK_LINKS}
-					buttonStyle="bg-koukla hover:bg-orange-700 border-b-4 border-orange-900"
+					buttonStyle="bg-koukla hover:bg-orange-500 border-b-4 border-orange-900"
 					linkStyle="hover:text-koukla"
 					modalStyle="border-koukla"
 				/>
@@ -42,9 +42,9 @@ const Ebook = () => {
 	);
 };
 
-const YoutubePlaylist = () => {
+const YoutubePlayer = () => {
 	return (
-		<div className="max-w-[800px] ml-auto hover:drop-shadow-dark duration-200 rounded border-2 border-black">
+		<div className="max-w-[800px] ml-auto hover:drop-shadow-dark duration-200 rounded border-2 sm:border-4 border-black">
 			<LiteYouTubeEmbed
 				playlist={true}
 				id={"PLuhlsr-P09NaUH8iDRDtuBH7DuTkaswhL"}
@@ -64,7 +64,7 @@ export default function Koukla() {
 				<div className="subcontainer">
 					<Title text="Περισσότερα" />
 					<Ebook />
-					<YoutubePlaylist />
+					<YoutubePlayer />
 				</div>
 			</div>
 		</div>

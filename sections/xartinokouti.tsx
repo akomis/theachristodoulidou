@@ -37,19 +37,19 @@ const EBOOK_LINKS = [
 const Ebook = () => {
 	return (
 		<div className="flex flex-col-reverse sm:flex-row w-full">
-			<div className="w-[80%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-end ">
+			<div className="w-[80%] sm:w-auto mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-end ">
 				<h2 className="text-3xl sm:text-4xl md:text-5xl text-center sm:text-right text-gray-200 font-bold font-vollkorn">
 					<span className="text-primary">Το Χάρτινο Κουτί</span> τώρα
 					και σε ebook!
 				</h2>
 				<OrderButton
 					ebookLinks={EBOOK_LINKS}
-					buttonStyle="bg-primary hover:bg-red-700 border-b-4 border-red-900"
+					buttonStyle="bg-primary hover:bg-red-500 border-b-4 border-red-900"
 					linkStyle="hover:text-primary"
 					modalStyle="border-primary"
 				/>
 			</div>
-			<div className="w-[80%] sm:w-full mx-auto m-4 sm:m-10 flex-1 border-4 border-primary rounded">
+			<div className="w-[80%] sm:w-auto mx-auto m-4 sm:m-10 flex-1 border-4 border-primary rounded">
 				<Image
 					src={toXartinoKoutiCover}
 					alt={"Εξώφυλλο - Το Χάρτινο Κουτί"}
@@ -250,7 +250,7 @@ const Contact = () => {
 export default function XartinoKouti() {
 	return (
 		<div className="section bg-stone-800">
-			<div className="subcontainer">
+			<div className="container">
 				<Ebook />
 			</div>
 			<div className="container flex-col md:flex-row">
