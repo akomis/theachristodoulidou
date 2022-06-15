@@ -27,7 +27,7 @@ export default function FormInput(props: FormInputProps) {
 
 	const styles = `${
 		!readOnly ? "bg-white" : "bg-gray-300 text-black"
-	} my-2 p-4 w-full shadow text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
+	} my-2 p-4 w-full rounded shadow text-black ring-2 ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
 
 	return large ? (
 		<textarea

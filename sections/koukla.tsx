@@ -10,26 +10,38 @@ const EBOOK_LINKS = [
 		shop: "Barnes & Noble",
 		url: "https://www.barnesandnoble.com",
 	},
+	{ shop: "Scribd", url: "https://www.scribd.com/" },
 ];
 
 const Ebook = () => {
 	return (
 		<div className="flex flex-col sm:flex-row mb-10 w-full">
-			<div className="w-[70%] sm:w-full flex-1 m-4 sm:m-10 mx-auto border-4 border-koukla rounded">
+			<div className="w-[70%] h-fit sm:w-full flex-1 m-4 sm:m-10 mx-auto border-4 border-koukla rounded">
 				<Image
 					src={KouklaCover}
 					alt={"Εξώφυλλο - Κούκλα"}
 					layout={"responsive"}
 				/>
 			</div>
-			<div className="w-[80%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-start ">
+			<div className="w-[90%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-start ">
 				<h2 className="text-3xl sm:text-4xl md:text-5xl text-center sm:text-left text-gray-200 font-bold font-vollkorn">
 					<span className="text-koukla">Κούκλα</span> ebook
 				</h2>
 				<h4 className="text-lg text-center sm:text-left text-gray-300 font-bold font-vollkorn">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua.
+					<p>
+						Ένα όλως διόλου ανθρώπινο κείμενο, μια ανθρώπινη ιστορία
+						που αγγίζει τις πιο ευαίσθητες χορδές μας και προκαλεί
+						ταυτόχρονα όλα τα συναισθήματα που μπορεί να αναπτύξει
+						κάποιος.
+					</p>
+					<p>
+						Διαβάζοντάς το γελάς, αγωνιάς, θυμώνεις, μελαγχολείς και
+						θέλεις να αγκαλιάσεις όλους τους χαρακτήρες, τους
+						οποίους γνωρίζεις πάρα πολύ καλά, γιατί αυτοί οι
+						χαρακτήρες είμαστε όλοι εμείς, με τις αδυναμίες, τα
+						πάθη, τις αγωνίες, τους πόθους και τις ιδιαιτερότητές
+						μας.
+					</p>
 				</h4>
 				<OrderButton
 					ebookLinks={EBOOK_LINKS}

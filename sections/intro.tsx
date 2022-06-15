@@ -94,9 +94,9 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 			}`}
 		>
 			<div
-				className={`absolute transition-all duration-700 ${
+				className={`absolute transition-all duration-500 ${
 					imgProps.imgPosition
-				} ${!active ? "grayscale" : "grayscale-0"}`}
+				} ${!active ? "grayscale" : "grayscale-0 scale-105"}`}
 			>
 				<Image
 					src={imgProps.src}

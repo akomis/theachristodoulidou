@@ -49,7 +49,7 @@ const Ebook = () => {
 					modalStyle="border-primary"
 				/>
 			</div>
-			<div className="w-[80%] sm:w-auto mx-auto m-4 sm:m-10 flex-1 border-4 border-primary rounded">
+			<div className="w-[80%] sm:w-auto h-fit mx-auto m-4 sm:m-10 flex-1 border-4 border-primary rounded">
 				<Image
 					src={toXartinoKoutiCover}
 					alt={"Εξώφυλλο - Το Χάρτινο Κουτί"}
