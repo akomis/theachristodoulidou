@@ -1,6 +1,8 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Title from "../components/title";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import FormInput from "../components/formInput";
+import OrderButton from "../components/orderButton";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import {
 	AiFillInstagram,
@@ -8,6 +10,7 @@ import {
 	AiFillPhone,
 	AiFillCheckCircle,
 } from "react-icons/ai";
+import toXartinoKoutiCover from "../public/images/book_covers/to_xartino_kouti.webp";
 
 const INTRO_TEXT = [
 	"Η Θέα Χριστοδουλίδου, μετά το πρώτο της μυθιστόρημα «η Κούκλα», επανέρχεται στην πεζογραφία αυτή τη φορά με «Το χάρτινο κουτί». Μια σύγχρονη συγκλονιστική ιστορία που παραπέμπει σε αρχαία ελληνική τραγωδία μιας και η πλοκή περιέχει όλα τα στάδια του σχήματος: ύβρις→ άτη→ νέμεσις→ τίσις. Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
@@ -23,10 +26,44 @@ const INTRO_TEXT = [
 	"«Το χάρτινο κουτί» είναι λοιπόν ένα μυθιστόρημα που αξίζει να διαβαστεί και να ταξιδέψει σε πολλά χέρια. Είναι ένα μυθιστόρημα που φωτίζει μια σκοτεινή εποχή στην κοινωνική ιστορία της Κύπρου, που αποκαλύπτει την τραγική μοίρα των γυναικών, που ψηλαφεί τις πιο σκοτεινές περιοχές της ανθρώπινης φύσης και που τελικά μας οδηγεί στην απόλυτη κάθαρση...",
 ];
 
+const EBOOK_LINKS = [
+	{ shop: "Apple Books", url: "https://books.apple.com/book/id6442962746" },
+	{
+		shop: "Barnes & Noble",
+		url: "https://www.barnesandnoble.com/w/to-xartino-kouti-thea-christodoulidou/1141640532?ean=2940166786197",
+	},
+];
+
+const Ebook = () => {
+	return (
+		<div className="flex flex-col-reverse sm:flex-row w-full">
+			<div className="w-[80%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-end ">
+				<h2 className="text-3xl sm:text-4xl md:text-5xl text-center sm:text-right text-gray-200 font-bold font-vollkorn">
+					<span className="text-primary">Το Χάρτινο Κουτί</span> τώρα
+					και σε ebook!
+				</h2>
+				<OrderButton
+					ebookLinks={EBOOK_LINKS}
+					buttonStyle="bg-primary hover:bg-red-700 border-b-4 border-red-900"
+					linkStyle="hover:text-primary"
+					modalStyle="border-primary"
+				/>
+			</div>
+			<div className="w-[80%] sm:w-full mx-auto m-4 sm:m-10 flex-1 border-4 border-primary rounded">
+				<Image
+					src={toXartinoKoutiCover}
+					alt={"Εξώφυλλο - Το Χάρτινο Κουτί"}
+					layout={"responsive"}
+				/>
+			</div>
+		</div>
+	);
+};
+
 const Preface = () => {
 	return (
 		<div className="h-subcontainer flex flex-col px-5 pb-3 rounded-lg gradient-bg">
-			<div className="h-auto overflow-y-scroll ">
+			<div className="h-auto overflow-y-scroll">
 				<div className="scroll-smooth antialiased">
 					{INTRO_TEXT.map((paragraph, i) => (
 						<p
@@ -43,61 +80,6 @@ const Preface = () => {
 				{"Ελίζα Χριστοφόρου, Φιλόλογος"}
 			</p>
 		</div>
-	);
-};
-
-type FormInputProps = {
-	placeholder: string;
-	type: string;
-	name: string;
-	value: string;
-	onChange: (e: ChangeEvent<any>) => void;
-	readOnly: boolean;
-	autoComplete?: string;
-	large?: boolean;
-	required?: boolean;
-};
-
-const FormInput = (props: FormInputProps) => {
-	const {
-		placeholder,
-		type,
-		name,
-		value,
-		onChange,
-		readOnly,
-		autoComplete,
-		large,
-		required,
-	} = props;
-
-	const styles = `${
-		!readOnly ? "bg-white" : "bg-gray-300 text-black"
-	} my-2 p-4 w-full shadow text-black ring ring-black focus:ring focus:ring-gray-600 focus:outline-none`;
-
-	return large ? (
-		<textarea
-			className={`${styles} min-h-[150px] max-h-[150px]`}
-			name={name}
-			value={value}
-			onChange={onChange}
-			readOnly={readOnly}
-			placeholder={placeholder}
-			autoComplete={autoComplete ?? "none"}
-			required={required ?? false}
-		/>
-	) : (
-		<input
-			className={`${styles} h-10`}
-			name={name}
-			value={value}
-			onChange={onChange}
-			readOnly={readOnly}
-			placeholder={placeholder}
-			type={type}
-			autoComplete={autoComplete ?? "none"}
-			required={required ?? false}
-		/>
 	);
 };
 
@@ -196,7 +178,7 @@ const Contact = () => {
 					}}
 				/>
 				<FormInput
-					placeholder="Μήνυμα *"
+					placeholder="Μήνυμα (*)"
 					type="text"
 					name="message"
 					value={message}
@@ -232,8 +214,8 @@ const Contact = () => {
 					)}
 				</button>
 			</form>
-			<div className="h-[100px] flex flex-row justify-between items-center">
-				<p className="text-white text-base sm:text-lg">
+			<div className="flex flex-row justify-between items-center">
+				<p className="text-white text-sm sm:text-xl md:text-base lg:text-lg">
 					{"Τηλέφωνο παραγγελιών βιβλίου "}
 					<a
 						className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
@@ -268,28 +250,17 @@ const Contact = () => {
 export default function XartinoKouti() {
 	return (
 		<div className="section bg-stone-800">
+			<div className="subcontainer">
+				<Ebook />
+			</div>
 			<div className="container flex-col md:flex-row">
 				<div className="subcontainer flex-[3]">
 					<Title text="Πρόλογος" />
 					<Preface />
 				</div>
-				<div className="subcontainer flex-[2]">
+				<div className="subcontainer flex-[2] md:mt-[300px]">
 					<Title text="Επικοινωνία" />
 					<Contact />
-				</div>
-			</div>
-			<div className="container">
-				<div className="subcontainer w-full hover:drop-shadow-dark duration-200">
-					<div className="rounded  border-4 border-black">
-						<LiteYouTubeEmbed
-							playlist={true}
-							id={"PLuhlsr-P09NaUH8iDRDtuBH7DuTkaswhL"}
-							title={"Το Χάρτινο Κουτί - Θέα Χριστοδουλίδου"}
-							playlistCoverId="_b6MHMlMjqc"
-							poster={"sddefault"}
-							webp
-						/>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -18,6 +18,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "#A24F70",
+				koukla: "#F6571D",
 			},
 			dropShadow: {
 				dark: "0 10px 10px rgba(0, 0, 0, 0.75)",
