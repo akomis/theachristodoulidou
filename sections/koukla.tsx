@@ -6,10 +6,7 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 const EBOOK_LINKS = [
 	{ shop: "Apple Books", url: "https://books.apple.com" },
-	{
-		shop: "Barnes & Noble",
-		url: "https://www.barnesandnoble.com",
-	},
+	{ shop: "Barnes & Noble", url: "https://www.barnesandnoble.com" },
 	{ shop: "Scribd", url: "https://www.scribd.com/" },
 ];
 
@@ -19,8 +16,8 @@ const Ebook = () => {
 			<div className="w-[70%] h-fit sm:w-full flex-1 m-4 sm:m-10 mx-auto border-4 border-koukla rounded">
 				<Image
 					src={KouklaCover}
-					alt={"Εξώφυλλο - Κούκλα"}
-					layout={"responsive"}
+					alt="Εξώφυλλο - Κούκλα"
+					layout="responsive"
 				/>
 			</div>
 			<div className="w-[90%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-start ">
@@ -32,15 +29,15 @@ const Ebook = () => {
 						Ένα όλως διόλου ανθρώπινο κείμενο, μια ανθρώπινη ιστορία
 						που αγγίζει τις πιο ευαίσθητες χορδές μας και προκαλεί
 						ταυτόχρονα όλα τα συναισθήματα που μπορεί να αναπτύξει
-						κάποιος.
+						κάποιος. Διαβάζοντάς το γελάς, αγωνιάς, θυμώνεις,
+						μελαγχολείς και θέλεις να αγκαλιάσεις όλους τους
+						χαρακτήρες, τους οποίους γνωρίζεις πάρα πολύ καλά, γιατί
+						αυτοί οι χαρακτήρες είμαστε όλοι εμείς, με τις
+						αδυναμίες, τα πάθη, τις αγωνίες, τους πόθους και τις
+						ιδιαιτερότητές μας.
 					</p>
-					<p>
-						Διαβάζοντάς το γελάς, αγωνιάς, θυμώνεις, μελαγχολείς και
-						θέλεις να αγκαλιάσεις όλους τους χαρακτήρες, τους
-						οποίους γνωρίζεις πάρα πολύ καλά, γιατί αυτοί οι
-						χαρακτήρες είμαστε όλοι εμείς, με τις αδυναμίες, τα
-						πάθη, τις αγωνίες, τους πόθους και τις ιδιαιτερότητές
-						μας.
+					<p className="font-notoserif text-base md:text-lg text-gray-300">
+						Δρ. Νέαρχος Ιωάννου
 					</p>
 				</h4>
 				<OrderButton

@@ -10,7 +10,7 @@ const modalStyles = {
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
 		borderWidth: 3,
-		borderColor: "#A24F70",
+		borderColor: "#FFFFFF",
 		borderRadius: 15,
 		backgroundColor: "#F9FBEE",
 	},
