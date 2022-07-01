@@ -21,19 +21,20 @@ const EBOOK_LINKS = [
 
 const Ebook = () => {
 	return (
-		<div className="flex flex-col sm:flex-row mb-10 w-full">
+		<div className="flex flex-col mb-10 w-full sm:flex-row">
 			<div className="w-[70%] h-fit sm:w-full flex-1 m-4 sm:m-10 mx-auto border-4 border-koukla rounded">
 				<Image
 					src={KouklaCover}
 					alt="Εξώφυλλο - Κούκλα"
 					layout="responsive"
+					priority
 				/>
 			</div>
 			<div className="w-[90%] sm:w-full mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-start ">
-				<h2 className="text-3xl sm:text-4xl md:text-5xl text-center sm:text-left text-gray-200 font-bold font-vollkorn">
+				<h2 className="text-3xl font-bold text-center text-gray-200 sm:text-4xl md:text-5xl sm:text-left font-vollkorn">
 					<span className="text-koukla">Κούκλα</span> ebook
 				</h2>
-				<h4 className="text-lg text-center sm:text-left text-gray-300 font-bold font-vollkorn">
+				<h4 className="text-lg font-bold text-center text-gray-300 sm:text-left font-vollkorn">
 					<p>
 						Ένα όλως διόλου ανθρώπινο κείμενο, μια ανθρώπινη ιστορία
 						που αγγίζει τις πιο ευαίσθητες χορδές μας και προκαλεί
@@ -45,7 +46,7 @@ const Ebook = () => {
 						αδυναμίες, τα πάθη, τις αγωνίες, τους πόθους και τις
 						ιδιαιτερότητές μας.
 					</p>
-					<p className="font-notoserif text-base md:text-lg text-gray-300">
+					<p className="text-base text-gray-300 font-notoserif md:text-lg">
 						Δρ. Νέαρχος Ιωάννου
 					</p>
 				</h4>
