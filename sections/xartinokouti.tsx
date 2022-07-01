@@ -43,9 +43,9 @@ const PREFACE_TEXT = [
 
 const Ebook = () => {
 	return (
-		<div className="flex flex-col-reverse sm:flex-row w-full">
+		<div className="flex flex-col-reverse w-full sm:flex-row">
 			<div className="w-[80%] sm:w-auto mx-auto m-4 sm:m-10 flex flex-col flex-[2] justify-center items-center sm:items-end ">
-				<h2 className="text-3xl sm:text-4xl md:text-5xl text-center sm:text-right text-gray-200 font-bold font-vollkorn">
+				<h2 className="text-3xl font-bold text-center text-gray-200 sm:text-4xl md:text-5xl sm:text-right font-vollkorn">
 					<span className="text-primary">Το Χάρτινο Κουτί</span> τώρα
 					και σε ebook!
 				</h2>
@@ -61,6 +61,7 @@ const Ebook = () => {
 					src={toXartinoKoutiCover}
 					alt="Εξώφυλλο - Το Χάρτινο Κουτί"
 					layout="responsive"
+					priority
 				/>
 			</div>
 		</div>
@@ -69,13 +70,13 @@ const Ebook = () => {
 
 const Preface = () => {
 	return (
-		<div className="h-subcontainer flex flex-col px-5 pb-3 rounded-lg gradient-bg">
-			<div className="h-auto overflow-y-scroll">
-				<div className="scroll-smooth antialiased">
+		<div className="flex flex-col px-5 pb-3 rounded-lg h-subcontainer gradient-bg">
+			<div className="overflow-y-scroll h-auto">
+				<div className="antialiased scroll-smooth">
 					{PREFACE_TEXT.map((paragraph, i) => (
 						<p
 							key={`paragraph-${i}`}
-							className="mb-5 text-base sm:text-xl text-gray-200"
+							className="mb-5 text-base text-gray-200 sm:text-xl"
 						>
 							{paragraph}
 						</p>
@@ -83,7 +84,7 @@ const Preface = () => {
 				</div>
 			</div>
 			<hr className="mt-4 mb-2 w-1/2" />
-			<p className="font-notoserif text-base sm:text-xl text-gray-300">
+			<p className="text-base text-gray-300 font-notoserif sm:text-xl">
 				{"Ελίζα Χριστοφόρου, Φιλόλογος"}
 			</p>
 		</div>
@@ -131,9 +132,9 @@ const Contact = () => {
 	const sendDisable = messageSent || message.length === 0;
 
 	return (
-		<div className="h-subcontainer flex flex-col justify-between">
+		<div className="flex flex-col justify-between h-subcontainer">
 			<form
-				className="text-white flex flex-col justify-center items-center"
+				className="flex flex-col justify-center items-center text-white"
 				data-netlify={true}
 				netlify-honeypot="bot-field"
 				name="contact"
@@ -200,11 +201,11 @@ const Contact = () => {
 					className={`${
 						sendDisable
 							? "hover:cursor-not-allowed"
-							: "hover:drop-shadow-dark hover:text-black hover:bg-primary hover:rounded-none hover:border-black hover:cursor-pointer duration-300"
+							: "duration-300 hover:drop-shadow-dark hover:text-black hover:bg-primary hover:rounded-none hover:border-black hover:cursor-pointer"
 					} shadow ${
 						!messageSent
 							? "bg-black"
-							: "bg-primary text-black border-2 border-black"
+							: "text-black border-2 border-black bg-primary"
 					} w-full rounded-md h-10 mt-4 text-xl font-bold`}
 					type="submit"
 					disabled={sendDisable}
@@ -212,7 +213,7 @@ const Contact = () => {
 					{!messageSent ? (
 						"Αποστολή"
 					) : (
-						<div className="flex items-center justify-center">
+						<div className="flex justify-center items-center">
 							{"Στάλθηκε!"}
 							<div className="ml-2">
 								<AiFillCheckCircle />
@@ -222,10 +223,10 @@ const Contact = () => {
 				</button>
 			</form>
 			<div className="flex flex-row justify-between items-center">
-				<p className="text-white text-sm sm:text-xl md:text-base lg:text-lg">
+				<p className="text-sm text-white sm:text-xl md:text-base lg:text-lg">
 					{"Τηλέφωνο παραγγελιών βιβλίου "}
 					<a
-						className="text-gray-200 transition-all duration-300 font-bold hover:drop-shadow-dark hover:text-primary"
+						className="font-bold text-gray-200 transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
 						href="tel:+35796754716"
 					>
 						96754716
