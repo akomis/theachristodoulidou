@@ -5,9 +5,18 @@ import Title from "../components/title";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 const EBOOK_LINKS = [
-	{ shop: "Apple Books", url: "https://books.apple.com" },
-	{ shop: "Barnes & Noble", url: "https://www.barnesandnoble.com" },
-	{ shop: "Scribd", url: "https://www.scribd.com/" },
+	{
+		shop: "Apple Books",
+		url: "https://books.apple.com/us/book/%CE%BA%CE%BF%CF%8D%CE%BA%CE%BB%CE%B1/id6443012509",
+	},
+	{
+		shop: "Barnes & Noble",
+		url: "https://www.barnesandnoble.com/w/koykla-thea-christodoulidou/1141680852?ean=2940166789655",
+	},
+	{
+		shop: "24 Symbols",
+		url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/koukla?id=4148608",
+	},
 ];
 
 const Ebook = () => {
