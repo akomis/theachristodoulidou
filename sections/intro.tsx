@@ -8,10 +8,10 @@ type imgProps = {
 	src: StaticImageData;
 	imgPosition: string;
 	textPosition: string;
-	delay: number;
+	delay: string;
 };
 
-const TITLE = "Το χάρτινο κουτί";
+const TITLE = "Το Χάρτινο Κουτί";
 const BG_TEXT = [
 	"Μια καθηλωτική αφήγηση με κεντρική ηρωίδα την Φαίδρα η οποία πλαισιώνεται από τα πρόσωπα που θα καθορίσουν την πορεία και τη μοίρα της.",
 	"Μια γυναίκα που κάθε φορά που επιχειρούσε μια απονενοημένη έξοδο, έπεφτε σε χειρότερη δύνη.",
@@ -29,7 +29,7 @@ const IMAGE_PROPS = [
 			"-rotate-[20deg] -left-10 top-20 w-[200px] sm:w-[250px] lg:w-[300px]",
 		textPosition:
 			"top-10 left-[180px] w-[50%] sm:left-[225px] sm:top-10 sm:w-[500px] md:w-[350px] md:text-xl lg:left-[300px] lg:w-[45%]",
-		delay: 300,
+		delay: "delay-[300ms]",
 	},
 	{
 		src: tree,
@@ -37,7 +37,7 @@ const IMAGE_PROPS = [
 			"-right-10 top-[200px] w-[400px] sm:w-[500px] sm:top-[130px] md:w-[600px] md:top-[80px] lg:w-[800px]",
 		textPosition:
 			"text-right top-[360px] right-26 w-[70%] sm:right-10 sm:top-12 sm:w-[70%] md:right-10 md:top-[450px] md:w-[450px] lg:top-[500px] lg:right-[5%] lg:w-[40%]",
-		delay: 800,
+		delay: "delay-[800ms]",
 	},
 	{
 		src: girl,
@@ -45,7 +45,7 @@ const IMAGE_PROPS = [
 			"right-[20%] bottom-0 w-[500px] sm:-left-10 sm:w-[650px] lg:left-10 lg:w-[700px]",
 		textPosition:
 			"text-center right-5 w-[120px] bottom-[420px] sm:text-xl sm:text-right sm:w-[300px] sm:left-[50px] sm:bottom-[520px] lg:w-[400px] lg:left-[800px] lg:bottom-[350px] lg:text-left ",
-		delay: 1000,
+		delay: "delay-[1000ms]",
 	},
 ];
 
@@ -58,7 +58,7 @@ const Heading = () => {
 
 	return (
 		<div
-			className={`absolute left-0 right-0 mx-auto transition-opacity duration-1000 delay-[1200ms] top-[450px] sm:top-[300px] ${
+			className={`absolute left-0 right-0 mx-auto transition-opacity duration-[1200ms] delay-[1600ms] top-[450px] sm:top-[300px] ${
 				!mounted ? "opacity-0" : "opacity-100"
 			} w-[350px] sm:w-[600px] md:w-[900px] lg:w-[1000px] flex-col`}
 		>
@@ -89,20 +89,23 @@ const InteractiveImage = (props: InteractiveImageProps) => {
 
 	return (
 		<div
-			className={`transition-opacity duration-1000 delay-500 ${
+			className={`transition-opacity duration-1000 ${imgProps.delay} ${
 				!mounted ? "opacity-0" : "opacity-100"
 			}`}
 		>
 			<div
-				className={`absolute transition-all duration-700 ${
+				className={`absolute transition-all duration-500 ${
 					imgProps.imgPosition
-				} ${!active ? "grayscale" : "grayscale-0"}`}
+				} ${
+					!active
+						? "grayscale"
+						: "grayscale-0 scale-105 -translate-y-[14px]"
+				}`}
 			>
 				<Image
 					src={imgProps.src}
 					alt={DEFAULT_IMG_INTRO_ALT}
 					layout={"responsive"}
-					placeholder="blur"
 					priority
 				/>
 			</div>
