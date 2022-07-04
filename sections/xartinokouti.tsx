@@ -76,7 +76,7 @@ const Preface = () => {
 					{PREFACE_TEXT.map((paragraph, i) => (
 						<p
 							key={`paragraph-${i}`}
-							className="mb-5 text-base text-gray-200 sm:text-xl"
+							className="mb-5 text-base sm:text-xl text-gray-200"
 						>
 							{paragraph}
 						</p>
@@ -84,7 +84,7 @@ const Preface = () => {
 				</div>
 			</div>
 			<hr className="mt-4 mb-2 w-1/2" />
-			<p className="text-base text-gray-300 font-notoserif sm:text-xl">
+			<p className="text-base sm:text-xl text-gray-300 font-notoserif">
 				{"Ελίζα Χριστοφόρου, Φιλόλογος"}
 			</p>
 		</div>
