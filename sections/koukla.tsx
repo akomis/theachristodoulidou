@@ -34,7 +34,7 @@ const Ebook = () => {
 				<h2 className="text-3xl font-bold text-center text-gray-200 sm:text-4xl md:text-5xl sm:text-left font-vollkorn">
 					<span className="text-koukla">Κούκλα</span> ebook
 				</h2>
-				<h4 className="text-lg font-bold text-center text-gray-300 sm:text-left font-vollkorn">
+				<h4 className="text-base sm:text-xl text-center sm:text-left text-gray-200">
 					<p>
 						Ένα όλως διόλου ανθρώπινο κείμενο, μια ανθρώπινη ιστορία
 						που αγγίζει τις πιο ευαίσθητες χορδές μας και προκαλεί
@@ -46,7 +46,7 @@ const Ebook = () => {
 						αδυναμίες, τα πάθη, τις αγωνίες, τους πόθους και τις
 						ιδιαιτερότητές μας.
 					</p>
-					<p className="text-base text-gray-300 font-notoserif md:text-lg">
+					<p className="text-base sm:text-xl text-gray-300 font-notoserif">
 						Δρ. Νέαρχος Ιωάννου
 					</p>
 				</h4>
