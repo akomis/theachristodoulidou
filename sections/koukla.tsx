@@ -6,6 +6,10 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 const EBOOK_LINKS = [
 	{
+		shop: "Read Library",
+		url: "https://www.read-library.com/kappaomicron973kappalambdaalpha.html",
+	},
+	{
 		shop: "24 Symbols",
 		url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/koukla?id=4148608",
 	},

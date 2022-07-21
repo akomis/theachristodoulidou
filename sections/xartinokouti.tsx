@@ -14,6 +14,10 @@ import toXartinoKoutiCover from "../public/images/book_covers/to_xartino_kouti.w
 
 const EBOOK_LINKS = [
 	{
+		shop: "Read Library",
+		url: "https://www.read-library.com/tauomicron-chi940rhotauiotanuomicron-kappaomicronupsilontau943.html",
+	},
+	{
 		shop: "24 Symbols",
 		url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/to-khartino-kouti?id=4121925",
 	},
