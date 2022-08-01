@@ -14,6 +14,10 @@ const EBOOK_LINKS = [
 		url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/koukla?id=4148608",
 	},
 	{
+		shop: "Rakuten kobo",
+		url: "https://www.kobo.com/ww/en/ebook/Kp7nEkVyazO5RWi85u77qg",
+	},
+	{
 		shop: "Apple Books",
 		url: "https://books.apple.com/us/book/%CE%BA%CE%BF%CF%8D%CE%BA%CE%BB%CE%B1/id6443012509",
 	},
