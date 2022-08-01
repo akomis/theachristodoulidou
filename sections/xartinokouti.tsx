@@ -22,6 +22,10 @@ const EBOOK_LINKS = [
 		url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/to-khartino-kouti?id=4121925",
 	},
 	{
+		shop: "Rakuten kobo",
+		url: "https://www.kobo.com/ww/en/ebook/F_CRtl_rSD-B6v0w_w8ViQ",
+	},
+	{
 		shop: "Apple Books",
 		url: "https://books.apple.com/us/book/%CF%84%CE%BF-%CF%87%CE%AC%CF%81%CF%84%CE%B9%CE%BD%CE%BF-%CE%BA%CE%BF%CF%85%CF%84%CE%AF/id6442962746",
 	},
