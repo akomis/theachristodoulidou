@@ -88,7 +88,7 @@ const YoutubePlayer = () => {
 
 export default function Koukla() {
   return (
-    <div className="section bg-stone-700">
+    <div className="section bg-stone-800">
       <div className="container flex-col">
         <div className="subcontainer">
           <Title text="Περισσότερα" />

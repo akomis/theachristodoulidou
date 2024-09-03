@@ -64,7 +64,9 @@ const Heading = () => {
     >
       <h1
         className={`${
-          !mounted ? "text-white" : "text-primary"
+          !mounted
+            ? "text-white"
+            : "bg-gradient-to-r from-red-900 via-primary to-fuchsia-900 bg-clip-text text-transparent"
         } m-4 text-center text-5xl sm:text-7xl transition-colors duration-1000 delay-[2000ms] sm:w-auto font-vollkorn md:text-8xl`}
       >
         {TITLE}

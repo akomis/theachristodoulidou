@@ -82,7 +82,7 @@ const Ebook = () => {
 
 const Preface = () => {
   return (
-    <div className="flex flex-col px-5 pb-3 rounded-lg h-subcontainer gradient-bg">
+    <div className="flex flex-col px-2 pb-3 rounded-lg h-subcontainer gradient-bg">
       <div className="overflow-y-scroll h-auto">
         <div className="antialiased scroll-smooth">
           {PREFACE_TEXT.map((paragraph, i) => (
@@ -242,19 +242,19 @@ const Contact = () => {
           </a>
         </p>
         <a
-          className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+          className="transition-all duration-300 hover:drop-shadow-dark text-offwhite hover:text-white"
           href="tel:+35796754716"
         >
           <AiFillPhone size={60} />
         </a>
         <a
-          className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+          className="transition-all duration-300 hover:drop-shadow-dark text-offwhite hover:text-white"
           href="https://www.instagram.com/theachristodoulidou/"
         >
           <AiFillInstagram size={60} />
         </a>
         <a
-          className="transition-all duration-300 hover:drop-shadow-dark hover:text-primary"
+          className="transition-all duration-300 hover:drop-shadow-dark text-offwhite hover:text-white"
           href="https://www.facebook.com/theachristodoulidoupage/"
         >
           <AiFillFacebook size={60} />
@@ -266,7 +266,7 @@ const Contact = () => {
 
 export default function XartinoKouti() {
   return (
-    <div className="section bg-stone-800">
+    <div className="section bg-stone-900">
       <div className="container">
         <Ebook />
       </div>
