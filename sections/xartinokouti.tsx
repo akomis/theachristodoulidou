@@ -21,22 +21,22 @@ const EBOOK_LINKS = [
     shop: "24 Symbols",
     url: "https://www.24symbols.com/book/ellenika/thea-christodoulidou/to-khartino-kouti?id=4121925",
   },
-  {
-    shop: "Rakuten kobo",
-    url: "https://www.kobo.com/ww/en/ebook/F_CRtl_rSD-B6v0w_w8ViQ",
-  },
-  {
-    shop: "Apple Books",
-    url: "https://books.apple.com/us/book/%CF%84%CE%BF-%CF%87%CE%AC%CF%81%CF%84%CE%B9%CE%BD%CE%BF-%CE%BA%CE%BF%CF%85%CF%84%CE%AF/id6442962746",
-  },
-  {
-    shop: "Barnes & Noble",
-    url: "https://www.barnesandnoble.com/w/to-xartino-kouti-thea-christodoulidou/1141640532?ean=2940166786197",
-  },
-  {
-    shop: "Scribd",
-    url: "https://www.scribd.com/book/577655049/%CE%A4%CE%BF-%CE%A7%CE%AC%CF%81%CF%84%CE%B9%CE%BD%CE%BF-%CE%9A%CE%BF%CF%85%CF%84%CE%AF",
-  },
+  // {
+  //   shop: "Rakuten kobo",
+  //   url: "https://www.kobo.com/ww/en/ebook/F_CRtl_rSD-B6v0w_w8ViQ",
+  // },
+  // {
+  //   shop: "Apple Books",
+  //   url: "https://books.apple.com/us/book/%CF%84%CE%BF-%CF%87%CE%AC%CF%81%CF%84%CE%B9%CE%BD%CE%BF-%CE%BA%CE%BF%CF%85%CF%84%CE%AF/id6442962746",
+  // },
+  // {
+  //   shop: "Barnes & Noble",
+  //   url: "https://www.barnesandnoble.com/w/to-xartino-kouti-thea-christodoulidou/1141640532?ean=2940166786197",
+  // },
+  // {
+  //   shop: "Scribd",
+  //   url: "https://www.scribd.com/book/577655049/%CE%A4%CE%BF-%CE%A7%CE%AC%CF%81%CF%84%CE%B9%CE%BD%CE%BF-%CE%9A%CE%BF%CF%85%CF%84%CE%AF",
+  // },
 ];
 
 const PREFACE_TEXT = [
